@@ -42,3 +42,6 @@ for k, v in s:
     d[k].add(v)
 
 sorted(d.items())
+
+# Power of two
+(n & (n-1) == 0) and n != 0
