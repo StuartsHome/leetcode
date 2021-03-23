@@ -44,4 +44,5 @@ for k, v in s:
 sorted(d.items())
 
 # Power of two
+# every power of 2 has exactly 1 bit set to 1 (the bit in that number's log base-2 index).
 (n & (n-1) == 0) and n != 0

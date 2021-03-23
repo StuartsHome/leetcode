@@ -4,8 +4,8 @@ class Solution:
     def permute(self, nums):
         visited = set()
         res = []
-        self.backtracking(res,visited,[],nums)
-        print(res)
+        memo = self.backtracking(res,visited,[],nums)
+        print(memo)
     def backtracking(self,res,visited,subset,nums):
         if len(subset) == len(nums):
             res.append(subset)

@@ -6,6 +6,7 @@ class Solution:
             # The check cand[0] != '0' is a check that the candidate permutation does not have a leading zero.
             # The check bin(int("".join(cand))).count('1') == 1 is a check that cand represents a power of 2: namely,
             # that the number of ones in its binary representation is 1.
+            # every power of 2 has exactly 1 bit set to 1 (the bit in that number's log base-2 index).
             if cand[0] != '0' and bin(int("".join(cand))).count('1') == 1:
                    return True
         return False
