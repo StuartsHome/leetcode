@@ -1,3 +1,11 @@
+# Standard Algorithms
+## Permutations
+
+### Permutations of anagram
+- Returns True if arg1 matches arg2
+- Only returns anagrams of arg1 that matches it's length
+
+```python
 class Solution:
 	def isAnagram(self, s, t):
 		strs = list(s)
@@ -11,10 +19,10 @@ class Solution:
 				memo.append([val]+y)
 				if t in memo:
 					return True
-		return (memo)
-
-	# def ppp(memo):
-	# 	print(memo)
+		return memo
 
 p1 = Solution()
 p1.isAnagram("car", "rac")
+
+
+```

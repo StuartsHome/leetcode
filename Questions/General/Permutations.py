@@ -74,10 +74,7 @@ class Solution:
 				memo.append([val]+y)
 				if t in memo:
 					return True
-		return self.ppp(memo)
-
-	def ppp(memo):
-		print(memo)
+		return memo
 
 p1 = Solution()
 p1.isAnagram("car", "rac")
