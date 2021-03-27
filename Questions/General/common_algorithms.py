@@ -47,8 +47,8 @@ def palindrome(n):
 
 palindrome(1221)
 
-
-
+##############
+####### Fibonacci
 memo = {}
 def fib(n):
 	if n in memo:
@@ -62,6 +62,25 @@ def fib(n):
 	return f
 
 fib(10)
+###############
+memo = {}
+class Solution:
+	def fibonacci(self, nums):
+		if nums in memo:
+			return memo[nums]
+		if nums <= 2:
+			return 1
+
+		else:
+			f = self.fibonacci(nums-1) + self.fibonacci(nums-2)
+		memo[nums] = f
+
+		return f
+		
+
+
+Run = Solution()
+Run.fibonacci(10)
 
 
 ##############

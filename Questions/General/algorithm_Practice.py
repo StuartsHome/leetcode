@@ -236,18 +236,6 @@ def romanToInt(n):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 class Solution:
 	def lcp(self, strs):
 		if len(strs) <= 1:
@@ -265,34 +253,7 @@ p1 = Solution()
 p1.lcp(["Flower", "Flow", "Flowler"])
 
 
-
-
-#########
-# Play
-
-######## 
-
-list("rat")
-
-
-
-
-# To Do:
-	# Quick Select / Quick Sort
-		# Merge Sort, Heap Sort
-	# Hash Map
-	# Balance BST
-	# Balance Parenthesis
-	# DFS and BFS in leetcode
-	# Priorigty Queue is a heap implemetation
-
-
-
-
-
 #######
-4 % 4
-
 # Test DisCandies
 give = 0
 candies = 4
@@ -339,19 +300,8 @@ class Solution:
 p1 = Solution()
 p1.lemonadeChallenge([5,5,5,10,20])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+##############
+##############
 class Solution:
 	def quickSort(self, nums):
 		lower = []
@@ -474,11 +424,6 @@ p1 = Solution()
 p1.disCandies(7, 4)
 
 ##########
-
-
-
-
-
 #########################
 
 # Topological sort from GeeksforGeeks
@@ -554,27 +499,6 @@ class Solution:
 
 p1 = Solution()
 p1.balanceParen("(())(")
-
-
-
-memo = {}
-class Solution:
-	def fibonacci(self, nums):
-		if nums in memo:
-			return memo[nums]
-		if nums <= 2:
-			return 1
-
-		else:
-			f = self.fibonacci(nums-1) + self.fibonacci(nums-2)
-		memo[nums] = f
-
-		return f
-		
-
-
-Run = Solution()
-Run.fibonacci(10)
 
 ###############
 # Second Smallest from Array

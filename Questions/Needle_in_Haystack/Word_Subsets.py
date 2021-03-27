@@ -1,4 +1,8 @@
 # Leetcode 916. Word Subsets
+# Second step is for each string a from A calculate counter and check
+# that it is bigger for each element than "cnt".
+# This can be done using  "not"
+
 
 from collections import Counter
 class Solution:
@@ -6,7 +10,7 @@ class Solution:
         cnt = Counter()
         for b in B:
             cnt |= Counter(b)
-            
+        
         return [a for a in A if not cnt - Counter(a)]
 
         # Solution 1 . same as first solution, but not using the ("or" pipe)
