@@ -46,3 +46,8 @@ sorted(d.items())
 # Power of two
 # every power of 2 has exactly 1 bit set to 1 (the bit in that number's log base-2 index).
 (n & (n-1) == 0) and n != 0
+
+
+# Unpacking an iterable into arguments
+times = [10, 20, 30, 40, 50]
+print(*times)
