@@ -51,3 +51,11 @@ sorted(d.items())
 # Unpacking an iterable into arguments
 times = [10, 20, 30, 40, 50]
 print(*times)
+
+# Dictionary - keys and values
+for i in d:
+    print (i, d[i])
+
+# For Python3
+for k, v in d.items():
+    print(k, v)
