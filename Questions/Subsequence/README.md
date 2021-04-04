@@ -1,7 +1,38 @@
 # Subsequence
 
-
-## Brute Force
+## Longest Continuous Increasing Subsequence
+### Brute Force
+```python
+class Solution:
+    def findLengthOfLCIS(self, nums):
+        if len(nums) == 0: return 0
+        if len(nums) == 1: return 1
+        result = []
+        for i in range(len(nums)):
+            counter = 1
+            for j in range(i, len(nums)- 1):
+                if nums[j + 1] > nums[j]:
+                    counter += 1
+                else:
+                    break
+            result.append(counter)
+        return max(result)
+```
+### DP
+```python
+class Solution:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
+        if len(nums) == 0:
+            return 0
+        
+        dp = [1] * len(nums)
+        for i in range(1, len(nums)):
+            if nums[i] > nums[i - 1]:
+                dp[i] = dp[i - 1] + 1
+        return max(dp)
+```
+## Longest Increasing Subsequence
+### Brute Force
 ```python
 class Solution:
     def lengthOfLIS(self, nums):
@@ -17,7 +48,7 @@ class Solution:
         return helper(nums, float('-inf'), 0)  
 ```
 
-## Recursion with Memoization
+### Recursion with Memoization
 ```python
     def lengthOfLIS(self, nums: List[int]) -> int:
         def helper(prev_i, i):
@@ -36,7 +67,7 @@ class Solution:
         return helper(-1, 0)
 ```
 
-## DP and Binary Search
+### DP and Binary Search
 ```python
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
@@ -55,13 +86,10 @@ class Solution:
         return size
 ```
 
-
-
 DP
 Knapsack (woodcutting)
 Longest increasing subsequence
 
 To do
 Brute force of both Knapsack and LIS
-Memoization of both
-LIS with not missing any numbers (i.e. consecutive numbers)
+Memoization of both 
