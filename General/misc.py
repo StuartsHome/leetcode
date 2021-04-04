@@ -59,3 +59,7 @@ for i in d:
 # For Python3
 for k, v in d.items():
     print(k, v)
+
+# Max and min values
+float('inf')
+float('-inf')

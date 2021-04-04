@@ -6,4 +6,5 @@
 - Knapsack_Problems
 - Palindrome
 - Permutations
+- Subsequence
 - Tries

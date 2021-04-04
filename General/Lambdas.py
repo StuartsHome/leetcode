@@ -31,3 +31,12 @@ print(cube(5))
 # using the lamda function
 print(lambda_cube(5))
 
+
+# Print the key of longest list in dict
+max_key = max(d, key= lambda x: len(set(d[x])))
+
+# Print largest key value pair - largest int, and largest len
+max(memo.items(), key = lambda x: x[1])
+max(memo.items(), key = lambda x: len(x[1]))
+aa = max(memo.items(), key = lambda x: len(x[1]))
+print(len(aa[1]))
