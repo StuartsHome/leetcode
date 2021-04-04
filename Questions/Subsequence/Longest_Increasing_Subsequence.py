@@ -2,6 +2,33 @@
 
 class Solution:
     def lengthOfLIS(self, nums):
+        if not nums: return 0
+        N = len(nums)
+        dp = [1] * N
+        
+        for i in range(N):
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    dp[i] = max(dp[i], dp[j] + 1)
+      
+        return max(dp)
+
+        """ Recursion with memoization
+        # def helper(prev_i, i):
+        #     if i == len(nums): return 0
+        #     if memo[prev_i + 1] >= 0:
+        #         return memo[prev_i + 1]
+        #     add, notAdd = 0, 0
+        #     if prev_i < 0 or nums[i] > nums[prev_i]:
+        #         add = 1 + helper(i, i + 1)
+        #     notAdd = helper(prev_i, i + 1)
+        #     memo[prev_i + 1] = max(add, notAdd)
+        #     return memo[prev_i + 1]
+			
+        # N = len(nums)
+        # memo = [-1 for _ in range(N)]       
+        # return helper(-1, 0)
+        """
         # TLE - Solution
         # def helper(nums, prev, curpos):
         #     if curpos == len(nums):
@@ -14,6 +41,7 @@ class Solution:
         # return helper(nums, float('-inf'), 0)        
         
         # TLE - Comments
+        """
         N = len(nums)
         def helper(last, i):
             if i == N: return 0
@@ -24,11 +52,7 @@ class Solution:
             return max(add, notAdd)     
 
         return helper(float('-inf'), 0)
-            
-
-
-
-
+        """
 Run = Solution()
 Run.lengthOfLIS([10,9,2,5,3,7,101,18])
 ([0,1,0,3,2,3])

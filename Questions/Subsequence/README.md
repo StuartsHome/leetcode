@@ -18,10 +18,26 @@ class Solution:
             result.append(counter)
         return max(result)
 ```
+### One Pass
+```python
+class Solution:
+    def findLengthOfLCIS(self, nums):
+        if nums == []:return 0
+        if len(nums) <= 1:return 1
+        count = 1
+        max_count = 1
+        for i in range(1,len(nums)):
+            if i and nums[i-1] < nums[i]:
+                count += 1
+                if count > max_count:
+                    max_count = count
+            else: count = 1
+        return max_count
+```
 ### DP
 ```python
 class Solution:
-    def findLengthOfLCIS(self, nums: List[int]) -> int:
+    def findLengthOfLCIS(self, nums):
         if len(nums) == 0:
             return 0
         
@@ -32,7 +48,7 @@ class Solution:
         return max(dp)
 ```
 ## Longest Increasing Subsequence
-### Brute Force
+### Brute Force - O(2^n)
 ```python
 class Solution:
     def lengthOfLIS(self, nums):
@@ -48,22 +64,23 @@ class Solution:
         return helper(nums, float('-inf'), 0)  
 ```
 
-### Recursion with Memoization
+### Recursion with Memoization - O(n^2)
 ```python
-    def lengthOfLIS(self, nums: List[int]) -> int:
+class Solution:
+    def lengthOfLIS(self, nums):
         def helper(prev_i, i):
             if i == len(nums): return 0
-            if memo[prev_i + 1][i] >= 0:
-                return memo[prev_i + 1][i]
+            if memo[prev_i + 1] >= 0:
+                return memo[prev_i + 1]
             add, notAdd = 0, 0
             if prev_i < 0 or nums[i] > nums[prev_i]:
                 add = 1 + helper(i, i + 1)
             notAdd = helper(prev_i, i + 1)
-            memo[prev_i + 1][i] = max(add, notAdd)
-            return memo[prev_i + 1][i]
+            memo[prev_i + 1] = max(add, notAdd)
+            return memo[prev_i + 1]
 			
         N = len(nums)
-        memo = [[-1 for _ in range(N)] for _ in range(N)]        
+        memo = [-1 for _ in range(N)]       
         return helper(-1, 0)
 ```
 

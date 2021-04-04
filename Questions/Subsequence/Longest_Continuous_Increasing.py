@@ -11,6 +11,7 @@ class Solution:
             if nums[i] > nums[i - 1]:
                 dp[i] = dp[i - 1] + 1
         return max(dp)
+        ################
         """ SLOW
         if len(nums) == 0: return 0
         if len(nums) == 1: return 1
@@ -25,27 +26,21 @@ class Solution:
             result.append(counter)
         return max(result)
         """
-
-        # N = len(nums)
-        # result = []
-        # def helper(last, i, add):
-        #     if last == N: return 0
-        #     if i < len(nums) and nums[i] > last:
-
-        #     # #add = 1
-        #     # if i < len(nums) and nums[i] > last:
-        #     #     return helper(nums[i], i + 1, add + 1)
-        #     # # if nums[i] > last:
-        #     # #     add += 1
-        #     # return add
-
-        # for x in range(len(nums)):
-        #     add = 1
-        #     length = helper(x, x + 1, add)
-        #     result.append(length)
-        # print(result)
-
-
+        ##################
+        """ One pass - no dp
+        if nums == []:return 0
+        if len(nums) <= 1:return 1
+        count = 1
+        max_count = 1
+        for i in range(1,len(nums)):
+            if i and nums[i-1] < nums[i]:
+                count += 1
+                if count > max_count:
+                    max_count = count
+            else: count = 1
+        return max_count
+        """        
+        
 Run = Solution()
 Run.findLengthofLCIS([1,3,5,4,2,3,4])
 
