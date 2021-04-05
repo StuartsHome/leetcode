@@ -1,6 +1,7 @@
+import collections, random
 class Solution:
     def topKFrequent(self, nums, k):
-        count = Counter(nums)
+        count = collections.Counter(nums)
         unique = list(count.keys())
 
         def partition(left, right, pivot_index):
@@ -49,7 +50,7 @@ class Solution:
         # All the elements on the right are more frequent. 
         quickselect(0, n-1, n-k)
         return unique[n-k:]
-
-
+Run = Solution()
+Run.topKFrequent([1,1,1,2,2,3,5,5,4,7,8,11,3,3,3,3,3], 2)
 
 

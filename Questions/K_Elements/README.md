@@ -72,3 +72,16 @@ class Solution:
         quickselect(0, n-1, n-k)
         return unique[n-k:]
 ```
+Steps -
+1. Get list of frequencies
+2. Convert keys into unique array
+3. Call quickselect to choose random int in unique to be pivot_index
+4. Call partition with pivot_index
+    1. Partitions goal is to place pivot in correct position
+5.  Move pivot to the end
+6. Set the pointer at the beginning of the array store_index = left.
+7. Iterate over the array and move all less frequent elements to the left swap(store_index, i). Move store_index one step to the right after each swap.
+8. Move the pivot to its final place, and return this index. 
+9. Compare pivot_index and N - k.
+    1. If pivot_index == N - k, the pivot is N - kth most frequent element, and all elements on the right are more frequent or of the same frequency. Return these top kk frequent elements.
+    2. Otherwise, choose the side of the array to proceed recursively.
