@@ -1,3 +1,4 @@
+# Trie Data Structure
 Tries and hash tables are reminiscent of one another because they both use arrays under the hood.
 - Tries - arrays combined with linked liasts
 - Hash Tables - arrays combined with pointers/references
@@ -20,3 +21,38 @@ every branch path to a string's values will be unique to that key.
 The amount of time it takes to create a trie is tied directly to how many words/keys the trie contains, and how long those keys could potentially be. The worst-case runtime for creating a trie is a combination of m, the length of the longest key in the trie, and n, the total number of keys in the trie. Thus, the worst case runtime of creating a trie is O(mn).
 
 The time complexity of searching, inserting, and deleting from a trie depends on the length of the word a that’s being searched for, inserted, or deleted, and the number of total words, n, making the runtime of these operations O(an). Of course, for the longest word in the trie, inserting, searching, and deleting will take more time and memory than for the shortest word in the trie.
+
+## Implementation
+Instead of defining a trie node class, we can use a dictionary as a trie node.
+```python
+class Trie:
+    def __init__(self):
+        self.memo = {}
+
+    def insert(self, word):
+        current = self.memo
+        for char in word:
+            if char not in current:
+                current[char] = {}
+            current = current[char]
+        current['#'] = True         # #' marks the end of word
+
+    def search(self, word):
+        current = self.memo
+        for char in word:
+            if char not in current:
+                return False
+            current = current[char]
+        if '#' in current:
+            return True
+        return False
+
+
+    def startsWith(self, prefix):
+        current = self.memo
+        for char in prefix:
+            if char not in current:
+                return False
+            current = current[char]
+        return True
+```

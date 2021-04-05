@@ -1,25 +1,3 @@
-# K Elements
-Find K smallest
-- Sort ascending order - `O(n log n)` (quick sort, merge sort)
-- Max heap -  
-    - Finding largest elements - `O(1)`
-- Hoare's Selection Algorithm (Quickselect)
-    - Average Time Complexity: O(N)
-    - Worst Case: O(N^2)
-
-
-## Top K Frequent Elements
-Steps:
-- Build hash map of frequency - O(N) where N is the number of elements in the list
-- Build heap of size K using N elements - O(N log K)
-- Convert heap to output array - O(K log K)
-
-
-
-
-### Quickselect
-- Choose a pivot and define its position in a sorted array in a linear time using partition algorithm
-```python
 class Solution:
     def topKFrequent(self, nums, k):
         count = Counter(nums)
@@ -71,4 +49,7 @@ class Solution:
         # All the elements on the right are more frequent. 
         quickselect(0, n-1, n-k)
         return unique[n-k:]
-```
+
+
+
+
