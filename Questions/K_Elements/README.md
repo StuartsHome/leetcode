@@ -70,7 +70,7 @@ class Solution:
         # All element on the left are less frequent.
         # All the elements on the right are more frequent. 
         quickselect(0, n-1, n-k)
-        return unique[n-k:]
+        return unique[n-k:] 
 ```
 Steps -
 1. Get list of frequencies
