@@ -1,11 +1,40 @@
 # Leetcode 447. Number of Boomerangs.
-# 1. At each point i, create a hashmap memo of the form {d:n}
+# At each point i, create a hashmap memo of the form {d:n}
 # where n is the total number of points that are d distance from p
 # Then we only need to count the number of unique pairs of those points.
 # The key insight here is that if we have a list of n points [p1, p2, p3, ..., pn]
 # then there are nP2 = (n! / (n-2)!) = n*(n-1) pairs of points that can follow p in order to form a boomerang.
 
 # For every point, there are k points with distance d, so there are k*(k-1) pairwise with distance d.
+# Permutation formula, to pick 2 out of k elements, the number of combinations is:
+# A_(k)^(m=2) = k(k-1)(k-2)(k-m+1) = k(k-2+1) = k(k-1)
+# Which is:
+"""
+# Sum the total number of combinations for point
+for count in distance_count.values():
+    result += count * (count - 1)
+"""
+
+# Euclidean distance
+# Using the Pythagorean theorem to compute two-dimensional Euclidean distance
+# d(p,q)**2 = (q1 - p1)**2 + (q2-p2)**2
+# Basically you have two points and your calculating the third
+
+# My notes:
+"""
+n*(n-1) is displayed in two different ways in the solutions below:
+1. 
+This solution is not adding to count when the distanced is stored in memo first.
+But subsequently adds a[c] to count every time it is then found
+c = (i[0]-j[0])**2+(i[1]-j[1])**2 
+if c not in a:
+    a[c]=1
+else:
+    count += a[c]  
+    a[c]+=1      
+
+2. 
+"""
 
 
 class Solution:
@@ -14,15 +43,13 @@ class Solution:
         for i in points:
             a={}
             for j in points:
-                c = (i[0]-j[0])**2+(i[1]-j[1])**2  ###Calculate the (distance)^2
+                c = (i[0]-j[0])**2 + (i[1]-j[1])**2  # Squared for euclidean distance between 2 points
                 if c not in a:
                     a[c]=1
                 else:
                     count += a[c]  
                     a[c]+=1       ### to find the number of all combinations
         return count*2   # Multiply by 2 because [a,b,c] and [a,c,b] are two different cases.
-
-
 
     # Solution 2
     """
