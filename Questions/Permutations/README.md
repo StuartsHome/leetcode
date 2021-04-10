@@ -12,6 +12,70 @@
 
 
 ### Standard Permutations of fixed length
+#### Permuations - Backtrack (Same Technique)
+Leetcode 46 - Permutations
+```python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        def dfs(counter, path):
+            if len(path) == len(nums):
+                res.append(path)
+                return
+            for x in counter:
+                if counter[x]:
+                    counter[x] -= 1
+                    dfs(counter, path+[x])
+                    counter[x] += 1
+        dfs(Counter(nums), [])
+        return res 
+Run = Solution()
+Run.permute([1,1,2])
+```
+#### Permutations II - Backtrack (Same Technique)
+Leetcode 47 - Permutations II
+```python
+from collections import Counter
+class Solution:
+    def permuteUnique(self, nums):
+        res = []
+        def dfs(counter, path):
+            if len(path) == len(nums):
+                res.append(path)
+                return
+            for x in counter:
+                if counter[x]:
+                    counter[x] -= 1
+                    dfs(counter, path+[x])
+                    counter[x] += 1
+        dfs(Counter(nums), [])
+        return res 
+Run = Solution()
+Run.permuteUnique([1,1,2])
+```
+## Subsets II - (Same Technique)
+1. 
+```python
+class Solution:
+    def subsetsWithDup(self, nums):
+        res = []
+        nums.sort()
+        def dfs(idx, path):
+            res.append(path)
+            for i in range(idx, len(nums)):
+                if i > idx and nums[i] == nums[i-1]:
+                    continue
+                dfs(i+1, path+[nums[i]])
+        dfs(0, [])
+        return res
+Run = Solution()
+Run.subsetsWithDup([1,2,2])
+```
+
+
+
+
+
 - Return unique
 ```python
 def permuteUnique(self, nums: List[int]) -> List[List[int]]:
@@ -72,11 +136,13 @@ class Solution:
 
 p1 = Solution()
 p1.isAnagram("car", "rac")
-
-
 ```
 
-### Permuations Ints
+### Permuations - No usable
+The following doesn't play nicely with classes.
+And only really works to print the values when encountered rather than
+adding the result to a memo array.
+
 ```python
 def perm(a, k=0):
    if k == len(a):
