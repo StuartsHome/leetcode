@@ -2,7 +2,7 @@
 
 from collections import Counter
 class Solution:
-    def kWindows(self, s, t, k):
+    def minWindow(self, s, t, k):
         if not t or not s:
             return ""
 
@@ -56,4 +56,6 @@ class Solution:
         return "" if ans[0] == float("inf") else s[ans[1] : ans[2] + 1]
 
 Run = Solution()
-Run.kWindows("ADOBECODEBANCACB", "ABC", 5)
+Run.minWindow("ADOBECODEBANCACB", "ABC", 5)
+
+S = "ADOBECODEAABNCZA"

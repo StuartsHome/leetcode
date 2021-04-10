@@ -47,6 +47,23 @@ sorted(d.items())
 # every power of 2 has exactly 1 bit set to 1 (the bit in that number's log base-2 index).
 (n & (n-1) == 0) and n != 0
 
+# Factors of number
+def factors(x):
+    return [i for i in range(1,x+1) if x%i==0]
+
+def factors(n):
+    return set(
+        factor for i in range(1, int(n**0.5) + 1) if n % i == 0
+        for factor in (i, n//i)
+    )
+
+def factors(n):
+    results = set()
+    for i in range(1, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            results.add(i)
+            results.add(int(n/i))
+    return results
 
 # Unpacking an iterable into arguments
 times = [10, 20, 30, 40, 50]
