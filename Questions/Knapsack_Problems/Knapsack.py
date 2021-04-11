@@ -1,7 +1,50 @@
 # Given weights and values of n items, put these items in a knapsack of capacity W 
 # to get the maximum total value in the knapsack.
 
+# Returning Optimum values - not the list of items
+"""def Solution(weight, value, capacity):
+    weight.insert(0, 0)
+    value.insert(0,0)
+    N = len(weight) - 1
+    V = len(value) - 1
+    def knapsack2(n, c):
+        if n == 0 or c == 0: return 0
+        elif weight[n] > c:
+            return knapsack2(n-1, c)
+        else:
+            temp1 = knapsack2(n-1, c)
+            temp2 = value[n] + knapsack2(n-1, c - weight[n])
+            result = max(temp1, temp2)
+        return result
+    aa = knapsack2(N, capacity)
+    print(aa)
+Solution([3,4,6,5], [2,3,1,4], 8)"""
+#Solution([10,20,30], [60,100,120], 50)
+#Solution([1,2,4,2,5], [5,3,5,3,2], 10)
 
+def Solution(weight, value, capacity):
+    weight.insert(0, 0)
+    value.insert(0,0)
+    memo = [[0 for x in range(capacity + 1)] for a in range(len(value) + 1)]
+    N = len(weight) - 1
+    V = len(value) - 1
+    def knapsack2(n, c):
+        if memo[n][c] != 0: return memo[n][c]
+        if n == 0 or c == 0: return 0
+        elif weight[n] > c:
+            return knapsack2(n-1, c)
+        else:
+            temp1 = knapsack2(n-1, c)
+            temp2 = value[n] + knapsack2(n-1, c - weight[n])
+            result = max(temp1, temp2)
+        memo[n][c] = result
+        return result
+    aa = knapsack2(N, capacity)
+    print(aa)
+Solution([3,4,6,5], [2,3,1,4], 8)
+
+# This is a bottom-up solution (not preferred)
+"""
 val = [50, 100, 150, 200]
 weights = [8, 16, 32, 40]
 capacity = 64
@@ -20,5 +63,5 @@ def knapsack(v, w, c):
             else:
                 table[i][j] = table[i-1][j]
     print(table[n][c])
-
 knapsack(val, weights, capacity)
+"""

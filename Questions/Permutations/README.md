@@ -53,6 +53,20 @@ class Solution:
 Run = Solution()
 Run.permuteUnique([1,1,2])
 ```
+## Subsets - (Same Technique)
+```python
+class Solution:
+    def subsets(self, nums):
+        res = []
+        def dfs(idx, path):
+            res.append(path)
+            for i in range(idx, len(nums)):
+                dfs(i+1, path+[nums[i]])
+        dfs(0, [])
+        return res
+Run = Solution()
+Run.subsets([1,2,3])
+```
 ## Subsets II - (Same Technique)
 1. 
 ```python
