@@ -19,7 +19,7 @@ class Solution:
 
 
 Run = Solution()
-Run.minRemoveToMakeValid("))((")
+Run.minRemoveToMakeValid("))(()")
 ("(a(b(c)d)")
 
 ("lee(t(c)o)de)")
