@@ -32,7 +32,7 @@ class Solution:
 Run = Solution()
 Run.permute([1,1,2])
 ```
-#### Permutations II - Backtrack (Same Technique)
+#### Permutations II - Backtrack - DFS
 Leetcode 47 - Permutations II
 ```python
 from collections import Counter
@@ -53,7 +53,7 @@ class Solution:
 Run = Solution()
 Run.permuteUnique([1,1,2])
 ```
-## Subsets - (Same Technique)
+## Subsets - DFS
 ```python
 class Solution:
     def subsets(self, nums):
@@ -67,7 +67,7 @@ class Solution:
 Run = Solution()
 Run.subsets([1,2,3])
 ```
-## Subsets II - (Same Technique)
+## Subsets II - DFS
 ```python
 class Solution:
     def subsetsWithDup(self, nums):
@@ -84,11 +84,33 @@ class Solution:
 Run = Solution()
 Run.subsetsWithDup([1,2,2])
 ```
+## Combination Sum - DFS
+Notes: inside the dfs call, only loop variable called; not `ind`
+```python
+class Solution:
+    def combinationSum(self, candidates, target):
+        if len(candidates) == 0:
+            return []
+        candidates.sort()
+        result = []
+        def dfs(ind, path, counter):
+            if counter > target:
+                return
+            if counter == target:
+                result.append(path)
+            for i in range(ind, len(candidates)):
+                dfs(i, [candidates[i]] + path, counter + candidates[i])
+        dfs(0, [], 0)
+        return result
+
+run = Solution()
+run.combinationSum([2,3,6,7], 7)
+```
 
 
 
 
-
+#### Outdated
 - Return unique
 ```python
 def permuteUnique(self, nums: List[int]) -> List[List[int]]:
