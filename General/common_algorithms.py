@@ -53,8 +53,8 @@ memo = {}
 def fib(n):
 	if n in memo:
 		return memo[n]
-	elif n <= 2:
-		return 1
+	if n == 0: return 0
+	if n == 1: return 1
 	else:
 		f = fib(n-1) + fib(n-2)
 	print(memo[n])
@@ -68,16 +68,12 @@ class Solution:
 	def fibonacci(self, nums):
 		if nums in memo:
 			return memo[nums]
-		if nums <= 2:
-			return 1
-
+		if nums == 0: return 0
+		if nums == 1: return 1
 		else:
 			f = self.fibonacci(nums-1) + self.fibonacci(nums-2)
 		memo[nums] = f
-
 		return f
-		
-
 
 Run = Solution()
 Run.fibonacci(10)
