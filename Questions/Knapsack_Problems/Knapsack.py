@@ -2,11 +2,10 @@
 # to get the maximum total value in the knapsack.
 
 # Returning Optimum values - not the list of items
-"""def Solution(weight, value, capacity):
+"""def Solution(value, weight, capacity):
     weight.insert(0, 0)
     value.insert(0,0)
     N = len(weight) - 1
-    V = len(value) - 1
     def knapsack2(n, c):
         if n == 0 or c == 0: return 0
         elif weight[n] > c:
@@ -18,11 +17,11 @@
         return result
     aa = knapsack2(N, capacity)
     print(aa)
-Solution([3,4,6,5], [2,3,1,4], 8)"""
-#Solution([10,20,30], [60,100,120], 50)
-#Solution([1,2,4,2,5], [5,3,5,3,2], 10)
+Solution([2,3,1,4], [3,4,6,5], 8)"""
+#Solution([60,100,120], [10,20,30], 50)
+#Solution([5,3,5,3,2], [1,2,4,2,5], 10)
 
-def Solution(weight, value, capacity):
+def Solution(value, weight, capacity):
     weight.insert(0, 0)
     value.insert(0,0)
     memo = [[0 for x in range(capacity + 1)] for a in range(len(value) + 1)]
@@ -41,7 +40,7 @@ def Solution(weight, value, capacity):
         return result
     aa = knapsack2(N, capacity)
     print(aa)
-Solution([3,4,6,5], [2,3,1,4], 8)
+Solution([2,3,1,4], [3,4,6,5], 8)
 
 # This is a bottom-up solution (not preferred)
 """

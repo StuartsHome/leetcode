@@ -4,6 +4,7 @@
 - Graphs
 - K_Elements
 - Knapsack_Problems
+- Kneedle in Haystack
 - Linked List
 - Palindrome
 - Permutations

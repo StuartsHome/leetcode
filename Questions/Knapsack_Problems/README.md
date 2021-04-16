@@ -10,7 +10,6 @@ Rows are values x weights, Columns are capacity
 Weights are in ascending order 
 Considering the first item and figuring out the best possible capacity
 
-
 ### Coin Change
 It's actually a complete backpack problem:
 - capacity of the "backpack" is amount
@@ -33,6 +32,60 @@ class Solution:
 
 Run = Solution()
 Run.coinChange([1,2,5], 11)
+```
+
+### Standard Knapsack
+```python
+class Solution:
+    def knapsack(self, value, weight, capacity):
+        ret_total = 0
+        weight.insert(0,0)
+        value.insert(0,0)
+        N = len(weight) - 1
+        
+        def helper(n, total):
+            if n == 0 or total == 0: return 0
+            if weight[n] > total:
+                return helper(n-1, total)
+            else:
+                #skip
+                skip = helper(n - 1, total)
+                #use
+                use = value[n] + helper(n - 1, total - weight[n])
+                result = max(skip, use)
+            return result
+        ret_total = helper(N, capacity)
+        print(ret_total)
+Run = Solution()
+Run.knapsack([2,3,1,4], [3,4,6,5], 8)
+```
+
+### Memo Knapsack
+To memoise:
+1. Add memo of range(capacity) + 1, range(len(value)) + 1
+2. Within helper method, add check if cell is != 0
+3. Within helper at the end, before returning result, store in memo
+```python
+def Solution(value, weight, capacity):
+    weight.insert(0, 0)
+    value.insert(0,0)
+    memo = [[0 for x in range(capacity + 1)] for a in range(len(value) + 1)]
+    N = len(weight) - 1
+    V = len(value) - 1
+    def knapsack2(n, c):
+        if memo[n][c] != 0: return memo[n][c]
+        if n == 0 or c == 0: return 0
+        elif weight[n] > c:
+            return knapsack2(n-1, c)
+        else:
+            temp1 = knapsack2(n-1, c)
+            temp2 = value[n] + knapsack2(n-1, c - weight[n])
+            result = max(temp1, temp2)
+        memo[n][c] = result
+        return result
+    aa = knapsack2(N, capacity)
+    print(aa)
+Solution([2,3,1,4], [3,4,6,5], 8)
 ```
 
 
