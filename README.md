@@ -9,4 +9,5 @@
 - Palindrome
 - Permutations
 - Subsequence
+- Trees
 - Tries
