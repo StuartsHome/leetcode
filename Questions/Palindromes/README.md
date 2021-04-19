@@ -13,7 +13,32 @@ may have to loop again which is O(N^2)
 
 NOTE - Manacher's Algorithm does it in O(N) - Linear time, but non trivial.
 
-## Longest palindrome
+- Manacher's - O(N)
+- My solutions are at worst - O(n^2)
+- Other solutions are O(n^3): two for loops to traverse each element twice, then while loop to expand from center
+### Palindromic Substrings - Time Complexity O(n^2) - Space O(1)
+```python
+class Solution():
+    def longestPalindrome(self, s):
+        total = 0
+        def helper(l,r):
+            aa = 0
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                aa += 1
+                l -= 1
+                r += 1
+            return aa
+                
+        N = len(s)
+        for i in range(N):
+            total += helper(i, i)
+            total += helper(i, i + 1)
+        return total              
+Run = Solution()
+Run.longestPalindrome("aaa")
+```
+
+## Longest Palindromic Substring - Time Complexity O(n^2) - Space O(1)
 ```python
 class Solution:
     def longestPalindrome(self, s):
