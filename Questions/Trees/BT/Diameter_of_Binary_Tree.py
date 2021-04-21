@@ -8,7 +8,25 @@ class TreeNode:
 
 class Solution():
     def diameterOfBinaryTree(self, root):
-        self.counter = 0
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        self.ans = 0
+        def height(p):
+            # it's custom to define the height of an empty tree to be -1. This also fixes the off-by-one error I mentioned.
+            if not p: return -1                    
+            left, right = height(p.left), height(p.right)
+            # the "2+" accounts for the edge on the left plus the edge on the right. This change is required to account for 
+            # the fact that we updated the height of an empty tree to be -1. 
+            self.ans = max(self.ans, 2+left+right)   
+            return 1+max(left, right)
+        height(root)
+        return self.ans      
+
+
+
+"""        self.counter = 0
         def dfs(root):
             if root is None:
                 return 0
@@ -17,7 +35,7 @@ class Solution():
             self.counter = max(self.counter, left_height + right_height)
             return 1 + max(left_height, right_height)
         dfs(root)
-        return self.counter
+        return self.counter"""
             
 
 """class Solution:
