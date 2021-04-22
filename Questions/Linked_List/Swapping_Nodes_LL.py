@@ -7,9 +7,8 @@ class ListNode:
 class Solution:
     def swapNodes(self, head, k):
         # One pass - Only swapping the vals, not the object
-        curr = first = dummy = head
+        curr = first = head
         second = None
-        first_prev = second_prev = None
         counter = 1
         while curr:
             second = None if second == None else second.next

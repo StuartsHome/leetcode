@@ -1,4 +1,59 @@
 
+
+## Sum of Binary Tree
+```python
+def treeSum(root):
+    if root is None:
+        return 0
+    else:
+        leftSum = treeSum(root.left)
+        rightSum = treeSum(root.right)
+        return root.val + leftSum + rightSum
+```
+
+## Max of Binary Tree
+```python
+def treeMax(root):
+    if root is None:
+        return float("-inf")
+    else:
+        leftMax = treeMax(root.left)
+        rightMax = treeMax(root.right)
+        return max(root.val, leftMax, rightMax)
+```
+## Tree Height
+```python
+def treeHeight(root):
+    if root is None:
+        return 0
+    else:
+        leftMax = treeHeight(root.left)
+        rightMax = treeHeight(root.right)
+        return 1 + max(leftMax, rightMax)
+```
+
+## Exists in Tree
+```python
+def existsInTree(root, value):
+    if root is None:
+        return False
+    else:
+        inLeft = existsInTree(root.left, value)
+        inRight = existsInTree(root.right, value)
+        return root.val == value or inLeft or inRight
+```
+# Reverse Tree
+```python
+def reverseTree(root):
+    if root is None:
+        return
+    else:
+        reverseTree(root.left)
+        reverseTree(root.right)
+        root.left, root.right = root.right, root.left
+```
+
+
 ## Diameter of Binary Tree
 ```python
 class Solution(object):
@@ -9,13 +64,10 @@ class Solution(object):
         """
         self.ans = 0
         def height(p):
-            # it's custom to define the height of an empty tree to be -1. This also fixes the off-by-one error I mentioned.
             if not p: return -1                    
-            left, right = height(p.left), height(p.right)
-            # the "2+" accounts for the edge on the left plus the edge on the right. This change is required to account for 
-            # the fact that we updated the height of an empty tree to be -1. 
-            self.ans = max(self.ans, 2+left+right)   
-            return 1+max(left, right)
+            left, right = height(p.left), height(p.right) # Find height of left and right subtrees
+            self.ans = max(self.ans, 2+left+right)      # Update diameter, plus 2 because current root has 2 edges below
+            return 1+max(left, right)                   # Running DFS, so return the height of the current root
         height(root)
         return self.ans     
 ```
