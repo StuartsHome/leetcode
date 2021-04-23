@@ -29,3 +29,54 @@
 - Design a Car Rental System
 - Design Facebook — a social network
 - 
+
+
+
+# Caches
+- Redis, memcache, elastic
+- What are the differences and what is key, value store?
+
+# For OOD:
+1. Write the damn API highlevel interfaces first
+2. Decide on what sort of infra / database distribution to use
+3. Describe what sort of business functions u are performing
+
+# Q's
+Order:
+    - Use case
+    - Scale (before high level design)
+    - Offer calculations of usage before designing
+        - number of users, number of transactions, number of active queries per day, etc
+    - Design rough idea, then move into load balancers, caches etc.
+
+First thing - clarifying questions:
+    - Ratio of reads to writes
+    - Size of data
+    - Keys in database
+    - Cloud?
+    - Usage
+        - Bandwidth
+        - How many concurrent connections to a redis instance?
+Second - Use cases:
+    - How service calculates
+    - user views, view categories or products
+    - scope
+    - 
+Third - Start and end point
+    - High level design
+    - After asking clarifying questions, ask where to start with the design, i.e. at the service? at the database?
+    - Start at concrete point
+        - e.g. client making call to service(server)
+    - Draw arrows or lines conneting things (relationships)
+Calculate usage:
+    - How much data is being sent to servcer
+    - How big are server requests
+    - How big are the transactions
+    - 40bytes, 40Bil, 40GB transfer to service every month?day? that requires sharding, replication etc.
+
+Databases:
+    - If the information is pre-processed, it can be stored and then archived for later use
+    - Store in object store, so can archive and send to S3
+        - Export the data to archive
+        - This allows backup in case something is lost
+        - More secure than having in database
