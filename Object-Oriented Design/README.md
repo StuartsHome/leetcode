@@ -51,6 +51,7 @@ Order:
 
 First thing - clarifying questions:
     - Ratio of reads to writes
+        - Parking garage would be more reads to writes
     - Size of data
     - Keys in database
     - Cloud?
@@ -80,3 +81,54 @@ Databases:
         - Export the data to archive
         - This allows backup in case something is lost
         - More secure than having in database
+
+CAP
+    - Availability or Consistency
+        - Availability
+        - Consistency
+            - when we talk about consistency we refer to an scenario where different entities (nodes) have their own copy of some data object.
+            - If read more than write
+                - Read replicas 
+            - Strong or eventual consistency?
+            In any distributed systen there will be multiple copies of any one piece of data
+                - Strong:
+                    - Front-end and backend db are consistent
+                    - Increased latency
+                    - Requires constant connection for latest information, if you lose Internet you can't view your balance 
+                    - Transactions are queued behind each other
+                - Eventual:
+                    - Copies of data don't have to always be identical as long as they are designed to eventually become consistent once all the operations have been processed.
+                    - Basic reading and writing operations are available as much as possible, but without consistency guarantees
+                    (the write may not persist after conflicts are reconciled), the read may not get the latest write
+                    - Eventual Consistency allows for batch processing.
+        - Conflict resolution
+            - When conflicts arise, this can usually be solved by a policy:
+                - Last write wins
+                - First write wins (used when LWW is unacceptable)
+
+Database
+    - ACID
+        - Atomicity, Consistency, Isolation, Durability
+        - is a set of properties of database transactions intended to guarantee data validity despite errors, power failures, and other mishaps.
+        - A sequence of database operations that satisfies the ACID properties is called a transaction.
+
+    - Batch processing or Real-time processing
+        - Allows services to manage large amounts of data efficiently
+        - The essential parameters include:
+            - Who is submitting the job?
+            - Which program will run the job?
+            - To location of the inputs and outputs
+            - When job run
+        - Example:
+            - Many companies use batch processing to automate their billing process
+            - Think of a credit card transaction that did not show up in your bank account history until several days after you spent your money. This transaction may have been processed in a batch sometime after you made your purchase.
+    - Data pre-processing 
+        - The step of transforming raw data into an understandable format (information)
+        - Steps:
+            - Normalisation (into a normalised and generalised format)
+        - The phrase "garbage in, garbage out"
+        - Used to remove data that is:
+            - Out of range
+            - unreliable
+            - noisy
+            - 
