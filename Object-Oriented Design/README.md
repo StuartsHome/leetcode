@@ -111,6 +111,22 @@ Database
         - Atomicity, Consistency, Isolation, Durability
         - is a set of properties of database transactions intended to guarantee data validity despite errors, power failures, and other mishaps.
         - A sequence of database operations that satisfies the ACID properties is called a transaction.
+    - NoSQL
+        - Stores all information in a single instance of DB, every stored object can be different from every other, and uses a hash lookup
+        - The difference lies in the way the data is processed; in a key-value store, the data is considered to be inherently opaque to the database, whereas a document-oriented system relies on internal structure in the document in order to extract metadata 
+        - Key-value pair or document
+            - Key- Value
+                - Dynamo, Memcache, Redis
+            - Document
+                - data storage system designed for storing, retrieving and managing document-oriented information, also known as semi-structured data
+                - Documents in a document store are roughly equivalent to the programming concept of an object.
+                - They are not required to adhere to a standard schema, nor will they have all the same sections, slots, parts or keys. 
+                - Another defining characteristic of a document-oriented database is that, beyond the simple key-to-document lookup that can be used to retrieve a document, the database offers an API or query language that allows the user to retrieve documents based on content (or metadata). For example, you may want a query that retrieves all the documents with a certain field set to a certain value. 
+                - MongoDB
+    - NoSQL disadvantages
+        - Many NoSQL stores compromise consistency (in the sense of the CAP theorem) in favor of availability, partition tolerance, and speed.
+        - Most NoSQL stores lack true ACID transactions, although a few databases have made them central to their designs.
+        - Instead, most NoSQL databases offer a concept of "eventual consistency", in which database changes are propagated to all nodes "eventually" (typically within milliseconds), so queries for data might not return updated data immediately or might result in reading data that is not accurate, a problem known as stale reads.
 
     - Batch processing or Real-time processing
         - Allows services to manage large amounts of data efficiently
