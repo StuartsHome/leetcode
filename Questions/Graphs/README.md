@@ -2,7 +2,8 @@
 
 ## Topics
 ### DFS and BFS
-- BFS for shortest path in an unweighted graph
+- BFS for shortest path in an unweighted graph (just count shortest edges)
+- DFS for shortest path in weighted graph
 - DFS uses a stack, BFS uses a queue 
 - BFS is difficult to do recursively without additional data structures because it uses a queue.
 

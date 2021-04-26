@@ -28,20 +28,13 @@
 - Design an Online Stock Brokerage System
 - Design a Car Rental System
 - Design Facebook — a social network
-- 
 
-
-
-# Caches
-- Redis, memcache, elastic
-- What are the differences and what is key, value store?
-
-# For OOD:
+## OOD Structure:
 1. Write the damn API highlevel interfaces first
 2. Decide on what sort of infra / database distribution to use
 3. Describe what sort of business functions u are performing
 
-# Q's
+## Q's
 Order:
     - Use case
     - Scale (before high level design)
@@ -82,7 +75,7 @@ Databases:
         - This allows backup in case something is lost
         - More secure than having in database
 
-CAP
+### CAP
     - Availability or Consistency
         - Availability
         - Consistency
@@ -106,7 +99,7 @@ CAP
                 - Last write wins
                 - First write wins (used when LWW is unacceptable)
 
-Database
+### Database
     - ACID
         - Atomicity, Consistency, Isolation, Durability
         - is a set of properties of database transactions intended to guarantee data validity despite errors, power failures, and other mishaps.
@@ -147,4 +140,3 @@ Database
             - Out of range
             - unreliable
             - noisy
-            - 

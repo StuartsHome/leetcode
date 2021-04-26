@@ -15,3 +15,18 @@ def camelMatch(self, queries, pattern):
         return i == len(p)
     return [patternMatch(pattern, q) for q in queries]
 ```
+
+## Two Pointers - Second closing pointer
+```python
+def prefix(business_names, searchTerm):
+    split = [i.split() for i in business_names]
+    ans = []
+    for name in split:
+        for i in range(len(name)):
+            query = ' '.join(name[i:])
+            if query.startswith(searchTerm):
+                ans.append(name)
+                break
+    aa = [' '.join(i) for i in ans]
+    print(aa)
+```
