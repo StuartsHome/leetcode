@@ -1,4 +1,5 @@
 # Leetcode 547. Number of Provinces
+# Time Complexity: O(n^2). O(n^2) to construct the graph and O(n) to run DFS, so the total is O(n^2).
 
 class Solution:
     def findCircleNum(self, isConnected):
@@ -19,11 +20,12 @@ class Solution:
         for idx in range(rows): #11
             if visited[idx] == False: #12
                 count += 1 #13
-                visited[idx] == True #14
+                visited[idx] = True #14
                 dfs(idx) #15
         
         return count #16
 Run = Solution()
-Run.findCircleNum([[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]])
+Run.findCircleNum([[1,0,0],[0,1,0],[0,0,1]])
+([[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]])
 
 ([[1,1,0],[1,1,0],[0,0,1]])
