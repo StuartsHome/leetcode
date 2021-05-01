@@ -9,8 +9,8 @@ print(x(5))
 x = lambda a, b, c : a + b + c
 print(x(5, 6, 2))
 
-# Lambda on 2D array
-sorted_list = sorted([[0,1],[0,2][1,1],[2,1]], key=lambda x : x[0])
+# Lambda on 2D array - sort by first or second column
+sorted_list = sorted([[0,1],[0,2],[1,1],[2,1]], key=lambda x : x[0])
 print(sorted_list)
 
 ######

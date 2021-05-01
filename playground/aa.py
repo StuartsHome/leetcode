@@ -1,22 +1,22 @@
+from itertools import product
+class WordFilter:
+    def __init__(self, words):
+        self.d = {}
+        # def prod(*args, repeat=2):
+        #     pools = [tuple(pool) for pool in args] * repeat
+        #     result = [[]]
+        #     for pool in pools:
+        #         result = [+[y] for x in result for y in pool]
+        #     for prod in result:
+        #         yield tuple(prod)
+                
+        for i, word in enumerate(words):
+            for p, s in product(range(len(word) + 1), repeat=2):
+                self.d[word[:p], word[s:]] = i
+        print(self.d)
+    def f(self, prefix, suffix):
+        return self.d.get((prefix, suffix), -1)
 
-
-def knapsack(val, weight, capacity):
-
-    val.insert(0, 0)
-    weight.insert(0,0)
-    N = len(val) - 1
-    def dfs(ind, total):
-        if ind == 0 or total == 0:
-            return 0
-        if weight[ind] > total:
-            return dfs(ind -1, total)
-        else:
-            skip = dfs(ind -1, total)
-            use = weight[ind] + dfs(ind -1, total - weight[ind])
-            result =  max(skip, use)
-        return result
-    aa = dfs(N, capacity)
-    print(aa)
-
-
-knapsack([1,2,3,4,5], [6,7,8,9,10], 12)
+Run = WordFilter(["cabaabaaaa","ccbcababac"])
+# Run.f("a","aa")
+# ( ["cabaabaaaa","ccbcababac","bacaabccba","bcbbcbacaa","abcaccbcaa","accabaccaa","cabcbbbcca","ababccabcb","caccbbcbab","bccbacbcba"])
