@@ -1,40 +1,22 @@
 
 
-class Solution:
-    def combinationSum3(self, k, n):
-        
-        nums = [i for i in range(10)]
-        # dp = [[0] * k + 1] * len(nums + 1)
-        result = []
-        N = len(nums) - 1
-        def knapsack(ind, path, total):
-            if ind == 0 or total == 0:
-                return 0
-            elif len(path) == k:
-                return path
-            elif nums[ind] > total:
-                return knapsack(ind - 1, path, total)
-            else:
-                # skip = knapsack(ind - 1, path, total)
-                use = knapsack(ind - 1, path + [nums[ind]], total - nums[ind])
-                # curr = max(skip, use)
-            result.append(path)
-            return
-        knapsack(N, [], n)
-        return result
+def knapsack(val, weight, capacity):
 
-Run = Solution()
-Run.combinationSum3(3, 7)
-"""    weight.insert(0, 0)
-    value.insert(0,0)
-    N = len(weight) - 1
-    def knapsack2(n, c):
-        if n == 0 or c == 0: return 0
-        elif weight[n] > c:
-            return knapsack2(n-1, c)
+    val.insert(0, 0)
+    weight.insert(0,0)
+    N = len(val) - 1
+    def dfs(ind, total):
+        if ind == 0 or total == 0:
+            return 0
+        if weight[ind] > total:
+            return dfs(ind -1, total)
         else:
-            temp1 = knapsack2(n-1, c)
-            temp2 = value[n] + knapsack2(n-1, c - weight[n])
-            result = max(temp1, temp2)
+            skip = dfs(ind -1, total)
+            use = weight[ind] + dfs(ind -1, total - weight[ind])
+            result =  max(skip, use)
         return result
-    aa = knapsack2(N, capacity)"""
+    aa = dfs(N, capacity)
+    print(aa)
+
+
+knapsack([1,2,3,4,5], [6,7,8,9,10], 12)

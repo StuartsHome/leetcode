@@ -7,8 +7,8 @@ class TreeNode:
 
 class Solution:
     def convertBST(self, root):
-        
-        def dfs(curr, total):
+
+        def dfs(curr, total):       # Function with Two parameters
             if curr is None:
                 return total
             curr.val += dfs(curr.right, total)
@@ -17,18 +17,18 @@ class Solution:
         dfs(root, 0)
         return root
 
-    """ alternate
-    self.total = 0
-    dfs(curr):
-        if not curr:
-            return 
-        dfs(curr.right)
-        self.total += curr.val
-        curr.val = self.total
-        dfs(curr.left)
-    dfs(root)
-    return root
-    """
+        """ alternate
+        self.total = 0
+        def dfs(curr):              # Function with One parameter
+            if not curr:
+                return 
+            dfs(curr.right)
+            self.total += curr.val
+            curr.val = self.total
+            dfs(curr.left)
+        dfs(root)
+        return root
+        """
 
 p4 = TreeNode(1)
 p3 = TreeNode(2, p4)
