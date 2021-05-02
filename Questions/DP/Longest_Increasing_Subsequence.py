@@ -6,8 +6,8 @@ class Solution:
         N = len(nums)
         dp = [1] * N
         
-        for i in range(N):
-            for j in range(i):
+        for i in range(1, N):
+            for j in range(i):                  # This for loop is to check from start of array to i
                 if nums[i] > nums[j]:
                     dp[i] = max(dp[i], dp[j] + 1)
       
