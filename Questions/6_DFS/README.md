@@ -87,3 +87,21 @@ class Solution:
 Run = Solution()
 Run.combinationSum3(3, 7)
 ```
+### Permutations
+```python
+class Solution:
+    def permute(self, nums):
+        result = []
+        def dfs(ind, path):
+            if not ind:
+                result.append(path)
+            
+            for i in range(len(ind)):
+                dfs(ind[:i]+ind[i+1:], path + [ind[i]])
+
+        dfs(nums, [])
+        print(result) 
+        
+Run = Solution()
+Run.permute([1,2,3])
+```
