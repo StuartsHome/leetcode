@@ -1,4 +1,6 @@
 # Leetcode 300. Longest Increasing Subsequence
+# Naive DP - Time: O(N^2), Space: O(N)
+
 
 class Solution:
     def lengthOfLIS(self, nums):

@@ -100,6 +100,29 @@ Databases:
                 - First write wins (used when LWW is unacceptable)
 
 ### Database
+    SQL or NoSQL
+    - SQL
+        - Optomised for storage
+        - Scale vertically - (schema)
+        - Not repeatable queries
+    - NOSQL
+        - Optomised for compute
+        - Scale horizontally
+        - Repeatable and consistent queries
+        - Distributed request router
+            - Parition information of configuration table is cached to stop lookups on config table
+        - Partition keys are used to id item
+            - enables routing to storage node to service request
+            - maintain fast consistent behaviour
+            - allows sort key for range
+            - partitions are 3-way repllicated
+    - Eventual and Strongly consisted
+        - Eventual reads are 1/2 cost of strongly consistent read
+            - this is because we have more nodes to choose from
+            - strongly (read from primary), eventual read from any of 3 replicas
+        - With 3 way replication, the primary node to secondary is sub one second
+        - By the time you've round tripped to the client the data will have already replicated secondaries 
+
     - ACID
         - Atomicity, Consistency, Isolation, Durability
         - is a set of properties of database transactions intended to guarantee data validity despite errors, power failures, and other mishaps.
@@ -140,3 +163,9 @@ Databases:
             - Out of range
             - unreliable
             - noisy
+    - NoSQL
+        - You can see that as a 2-dimensional key-value store. The first part of the key is used to distribute the data across servers, the second part of the key lets you quickly find the data on the target server.
+    - Replication Factor
+        - How many backups of the same DB
+        - So Hadoop (HDFS) is fault tolerant
+        - If a server fails, there is a copy
