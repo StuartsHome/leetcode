@@ -23,16 +23,22 @@
 
 
 
-class Solution:
-    def LIS(self, nums):
+# class Solution:
+#     def LIS(self, nums):
 
-        for i in range(1, len(nums)):
-            for j in range(i):
-                print(i, j)
+#         for i in range(1, len(nums)):
+#             for j in range(i):
+#                 print(i, j)
 
 
-Run = Solution()
-Run.LIS([0,1,0,3,2,3])
-([4,10,4,3,8,9])
-([-2, -1])
-([10,9,2,5,3,7,101,18])
+# Run = Solution()
+# Run.LIS([0,1,0,3,2,3])
+# ([4,10,4,3,8,9])
+# ([-2, -1])
+# ([10,9,2,5,3,7,101,18])
+
+
+
+
+
+
