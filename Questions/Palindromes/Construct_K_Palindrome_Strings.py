@@ -8,7 +8,7 @@
 # the number of odd characters should not be bigger than k.
 
 # Logic:
-# k, s.size() are relatively large - 10^5, so no backtracking, brute-force is applicable.
+# k, s.size() are relatively large - 10^5, so no backtracking or brute-force is applicable.
 # It's either dynamic programming or pure array logic
 
 class Solution:
