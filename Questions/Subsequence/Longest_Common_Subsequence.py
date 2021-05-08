@@ -48,7 +48,7 @@ def helper(i, j):
 return helper(0, 0)
 """
 
-# DP
+# Bottom-up DP
 """
 m = len(text1)
 n = len(text2)

@@ -32,15 +32,15 @@ class Solution:
         # return helper(-1, 0)
         """
         # TLE - Solution
-        # def helper(nums, prev, curpos):
-        #     if curpos == len(nums):
+        # def helper(ind, prev):
+        #     if ind == len(nums):
         #         return 0
-        #     taken = 0
-        #     if nums[curpos] > prev:
-        #         taken = 1 + helper(nums, nums[curpos], curpos + 1)
-        #     nottaken = helper(nums, prev, curpos + 1)
-        #     return max(taken, nottaken)
-        # return helper(nums, float('-inf'), 0)        
+        #     use = 0
+        #     if nums[ind] > prev:
+        #         use = 1 + helper(ind + 1, nums[ind])
+        #     skip = helper(ind + 1, prev)
+        #     return max(use, skip)
+        # return helper(0, float('-inf'))  
         
         # TLE - Comments
         """

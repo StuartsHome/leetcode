@@ -80,3 +80,7 @@ for k, v in d.items():
 # Max and min values
 float('inf')
 float('-inf')
+
+# Square Root
+x = 10
+x**.5
