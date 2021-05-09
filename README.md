@@ -11,3 +11,14 @@
 - Subsequence
 - Trees
 - Tries
+
+
+Top:
+- Camelcase Matching - Leetcode 1023
+- Subsequence
+    - Longest Common Subsequence - [recursion & dp] - Leetcode 1143
+        - Recursion w/ memo T: O(mn)
+        - Bottom up DP T: O(mn), S: O(mn)
+    - Longest Increasing Subsequence - [recursion & dp]- Leetcode 674
+        - recursion T: O(2^n), S: O(n^2) - size of recursion tree is 2^n, memo array of size n * n is used
+        - dp T: O(n^2), S: O(n) - Two loops of n, dp of size n
