@@ -387,7 +387,7 @@ class Solution:
 
 
 p1 = Solution()
-p1.is_prime(7)
+p1.is_prime(3)
 
 
 ##################
