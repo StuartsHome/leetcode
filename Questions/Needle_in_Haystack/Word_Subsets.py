@@ -34,18 +34,21 @@ class Solution:
         """
 
         # Solution 1.
+        # Construct unique subset for B
         """
         s = set(A)
-        letters_required = {}
+        required = {}
         for i in B:
             for j in i:
                 count = i.count(j)
-                if j not in letters_required or count > letters_required[j]:
-                    letters_required[j] = count
-
+                if j not in required or count > required[j]:
+                # Instead of If statement can use the below
+                # max(i.count(j), required.get(char, 0))
+                    required[j] = count
+        # print(required)
         for i in A:
-            for j in letters_required:
-                if i.count(j) < letters_required[j]:
+            for j in required:
+                if i.count(j) < required[j]:
                     s.remove(i)
                     break
         return list(s)
