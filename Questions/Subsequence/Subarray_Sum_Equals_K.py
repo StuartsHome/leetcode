@@ -1,19 +1,38 @@
 # Leetcode 560. Subarray Sum Equals K
+# Solution 1. O(N)
 import collections
 class Solution:
     def subarraySum(self, nums, k):
-        running_sum = 0
-        hash_table = collections.defaultdict(lambda:0)
-        total = 0
+        # Solution 1. Default Dict
+        hash_table = collections.defaultdict(int)
+        hash_table[0] = 1
+        ans = running_sum = 0
         for x in nums:
             running_sum += x
-            sum = running_sum - k
-            if sum in hash_table:
-                total += hash_table[sum]
-            if running_sum == k:
-                total += 1
+            ans += hash_table[running_sum-k]
             hash_table[running_sum] += 1
-        return total
+        return ans
+
+        # Solution 2. Dict
+        hash_table, running_sum, res = {0: 1}, 0, 0
+        for x in nums:
+            running_sum += x
+            res += hash_table.get(running_sum - k, 0)
+            hash_table[cur] = hash_table.get(running_sum, 0) + 1
+        return res
+
+        # hash_table = collections.defaultdict(lambda:0)
+        # has_table[0] = 1
+        # total = 0
+        # for x in nums:
+        #     running_sum += x
+        #     sum = running_sum - k
+        #     if sum in hash_table:
+        #         total += hash_table[sum]
+        #     if running_sum == k:
+        #         total += 1
+        #     hash_table[running_sum] += 1
+        # return total
 Run = Solution()
 Run.subarraySum([1,2,2,0,3,2,5], 5)
 [0, 1, 3, 5, 5, 8, 10, 15]
