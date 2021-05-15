@@ -74,3 +74,22 @@ Run.subarraySum([1,2,2,0,3,2,5], 5)
 # ([1,-1,0],0)
 # ([1,2,3], 3)
 # ([1,1,1], 2)
+
+
+def subarraySum(self, nums, k):
+
+
+    dp = {0:1}
+    running_total = 0
+    curr = 0
+
+    for i in nums:
+        running_total += i
+        curr += dp.get(running_total - k, 0)
+        dp[running_total] = dp.get(running_total, 0) + 1
+    return curr
+
+
+
+
+subarraySum([1,2,2,0,3,2,5], 5)

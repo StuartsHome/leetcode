@@ -2,6 +2,11 @@
 # if one of the subtree is None, you should return the depth of another subtree.
 # if all of the subtree is not None, you should return the minimum depth of the two subtrees
 
+# The first recursive call is `return min(self.minDepth(root.left), self.minDepth(root.right)) + 1 `
+# This breaks the whole tree into two: the left subtree and the right
+# We want the minimum of both subtrees
+
+
 class Solution():
     def minDepth(self, root):
         if not root:
@@ -14,7 +19,7 @@ class Solution():
             elif root.right is None:
                 return self.minDepth(root.left) + 1
             else:
-                return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
+                return min(self.minDepth(root.left), self.minDepth(root.right)) + 1 
 
     # Elaborate alternative:
     def minDepth(self, root):
@@ -58,3 +63,22 @@ if root.right and not root.left:
     return 1 + self.minDepth(root.right)
 
 """
+
+# BFS - Simpler to understand
+import collections
+def minDepth(self, root):
+    if root is None:
+        return 0
+    q = collections.deque()
+    q.append((root, 1))
+
+    while q:
+        curr, depth = q.popleft()
+
+        if curr.left is None and curr.right is None:
+            return depth
+        if curr.left:
+            q.append((curr.left, depth + 1))
+        if curr.right:
+            q.append((curr.right, depth + 1))
+
