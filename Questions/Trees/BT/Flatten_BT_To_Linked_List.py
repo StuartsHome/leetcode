@@ -25,7 +25,7 @@ class Solution:
             curr.right = root.right
             root.right = root.left
             root.left = None
-        self.flatten(root.right)
+        self.flatten(root.right) # only root.right, because above algo does the left but doesn't call the right
 
     # Faster solution, using previous_traversal to update on each DFS traversal
     # Using helper dfs function

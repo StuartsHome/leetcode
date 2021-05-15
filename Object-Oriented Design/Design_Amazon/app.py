@@ -6,6 +6,3 @@ class Item:
 
     def addReview(self, review):
         pass
-
-
-
