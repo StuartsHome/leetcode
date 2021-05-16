@@ -39,28 +39,49 @@
 
 
 
-class Solution:
-    def wordSubsets(self, A, B):
-        # Construct unique subset for B
-        s = set(A)
-        required = {}
-        for i in B:
-            for j in i:
-                count = i.count(j)
-                if j not in required or count > required[j]:
-                # Instead of If statement can use the below
-                # max(i.count(j), required.get(char, 0))
-                    required[j] = count
-        # print(required)
-        for i in A:
-            for j in required:
-                if i.count(j) < required[j]:
-                    s.remove(i)
-                    break
-        return list(s)
+# class Solution:
+#     def wordSubsets(self, A, B):
+#         # Construct unique subset for B
+#         s = set(A)
+#         required = {}
+#         for i in B:
+#             for j in i:
+#                 count = i.count(j)
+#                 if j not in required or count > required[j]:
+#                 # Instead of If statement can use the below
+#                 # max(i.count(j), required.get(char, 0))
+#                     required[j] = count
+#         # print(required)
+#         for i in A:
+#             for j in required:
+#                 if i.count(j) < required[j]:
+#                     s.remove(i)
+#                     break
+#         return list(s)
 
+
+# Run = Solution()
+# Run.wordSubsets(["amazon","apple","facebook","google","leetcode"], ["e","o"])
+
+
+
+
+
+class Solution:
+    def maxScore(self, cardPoints, k):
+        
+        N = len(cardPoints) - k
+        minSubArraySum = float('inf')
+        j = curr = 0
+
+        for ind, val in enumerate(cardPoints):
+            curr += val
+            if ind - j + 1 > N:
+                curr -= cardPoints[j]
+                j += 1
+            if ind - j + 1 == N:
+                minSubArraySum = min(minSubArraySum, curr)
+        return sum(cardPoints) - minSubArraySum
 
 Run = Solution()
-Run.wordSubsets(["amazon","apple","facebook","google","leetcode"], ["e","o"])
-
-
+Run.maxScore([1,2,3,4,5,6,1], 3)

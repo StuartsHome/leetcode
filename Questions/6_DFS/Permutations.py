@@ -4,7 +4,7 @@ class Solution:
     def permute(self, nums):
         result = []
         def dfs(ind, path):
-            if not ind:
+            if not ind and path not in result:
                 result.append(path)
             
             for i in range(len(ind)):
