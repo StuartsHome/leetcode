@@ -89,6 +89,29 @@ for p, v in enumerate(s):
 return len(s)
 """     
 
+# Brute Force
+"""
+maxi=0
+for i in range(len(s)):
+    check=set()
+    table=defaultdict(int)
+    for j in range(i, len(s)):
+        table[s[j]]+=1
+        if table[s[j]]>=k:
+            check.add(s[j])
+        if len(check)==len(table):
+            maxi=max(maxi, j-i+1)
+return maxi
+
+"""
+
+
+
+
+
+
+
+
 
 # Frequency Counter
 # Dictionary instead of Counter
