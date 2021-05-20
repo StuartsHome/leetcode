@@ -35,3 +35,23 @@ def get_article(url):
 
 get_article("https://realpython.com/sorting-algorithms-python/")
 get_article("https://realpython.com/sorting-algorithms-python/")
+
+
+
+
+class Fruit:
+    def __init__(self, age=None):
+        self.colour = "green"
+        self.age = age
+
+    def get_colour(self):
+        print(self.colour)
+
+class Apple(Fruit):
+    def __init__(self, colour="red", age=10):
+        super().__init__(colour)
+        super().get_colour
+
+aa = Apple().get_colour()
+print("Age: ", Apple().age)
+print(Apple().colour)
