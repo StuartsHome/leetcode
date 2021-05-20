@@ -10,14 +10,31 @@ It's actually a complete backpack problem:
 class Solution:
     def coinChange(self, coins, amount):
         dp = [0] + [float('inf')] * amount
-        
+
         for coin in coins:
             for i in range(coin, amount + 1):
                 dp[i] = min(dp[i], dp[i-coin] + 1)
-        
+
         if dp[-1] == float('inf'):
             return -1
         return dp[-1]
 
 Run = Solution()
 Run.coinChange([1,2,5], 11)
+
+"""
+# TLE
+coins.sort(reverse = True)
+N, self.res = len(coins), 2**31-1
+
+def dfs(ind, path, total):
+    if not path:
+        self.res = min(self.res, total)
+    for i in range(ind, N):
+        if coins[i] <= path < coins[i] * (self.res - total):
+            dfs(i, path - coins[i], total + 1)
+
+for i in range(N):
+    dfs(i, amount, 0)
+return self.res if self.res < 2**31-1 else -1
+"""

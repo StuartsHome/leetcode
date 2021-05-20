@@ -15,6 +15,12 @@
 # 1. sorted returns a sorted list and can be used on any iterable
 # 2. sort modifies the list in place, and returns None. It's usually less convenient than sorted()
 
+
+# 1. As we want the min. steps to make the array equal, it would be better, if we start with an element that is at minimum distance from all the numbers combined.
+# 2. So for that we sort the array and get the median of the array.
+# 3. Now we sum the difference between the median and individual element in the sorted array.
+# 4. The sum is our final answer.
+
 class Solution:
     def minMoves2(self, nums):
         N = sorted(nums)

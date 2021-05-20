@@ -89,7 +89,7 @@ for p, v in enumerate(s):
 return len(s)
 """     
 
-# Brute Force
+# Brute Force - Accepted and Easy to understand, but bad runtime
 """
 maxi=0
 for i in range(len(s)):
