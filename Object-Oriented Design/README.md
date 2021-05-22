@@ -169,3 +169,21 @@ Databases:
         - How many backups of the same DB
         - So Hadoop (HDFS) is fault tolerant
         - If a server fails, there is a copy
+
+Rate Limiting:
+- Web servers typically use a centra in-memory key-value database, like Redis, for session management. A rate limiting algorithm is used to check if the user session (or IP address) has to be limited based on the information in the session cache.
+In case a client made too many requests within a given time frame, HTTP server can respond with the status code 429: Too Many Requests
+
+Rate limiter not on web server but built into app running on web server.
+
+Polling:
+Short polling: Client continuously making calls to the resource at specified intervals
+Resource responds everytime
+Long Polling: Connection stays open until resource is sent to client
+Client initiates connection with resource and if resource doesn't have enough data it keeps connection open to respond later, but if it does have data it responds immediately.
+
+Web Sockets: Connection opened between client and resource
+Bi-directional relationship in either can push data as they see fit
+As data changes on the back-end it can be pushed
+
+

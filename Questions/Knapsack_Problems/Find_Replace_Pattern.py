@@ -1,4 +1,6 @@
 # Leetcode 890. Find and Replace Pattern
+# Similar to Leetcode 205. Isomorphic Strings
+
 # Solution 1: T: O(n * k), S: O(n * k)
     # n is the number of words, and K is the length of each word
 # Solution 2: T: O(n * k), S: O(n * K)
