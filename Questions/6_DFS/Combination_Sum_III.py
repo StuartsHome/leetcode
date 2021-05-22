@@ -1,5 +1,6 @@
 # Leetcode 216. Combination Sum III
 
+# 1 - Removes duplicates and enforces that each number is used at most once.
 class Solution:
     def combinationSum3(self, k, n):
         result = []
@@ -8,7 +9,7 @@ class Solution:
             if target < 0 or curr < 0: return
             if target == 0 and curr == 0:
                 result.append(path)
-            use = path[-1] + 1 if path else 1
+            use = path[-1] + 1 if path else 1   # 1
             for i in range(use, 10):
                 dfs(curr - 1, path + [i], target - i)
         

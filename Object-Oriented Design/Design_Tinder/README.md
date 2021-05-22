@@ -18,3 +18,8 @@ Files:
 - Cheaper
 - Faster storing large objects
 - Static so able to use CDN for fast access
+
+
+Implementing a change:
+- A conversation should take place between the contributors and the maintainers
+discussing: the scope of the chaange, proposed implementation, responsibilities and release plan.
