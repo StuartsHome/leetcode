@@ -84,3 +84,8 @@ float('-inf')
 # Square Root
 x = 10
 x**.5
+
+
+# Using Dictionary - min or max of values:
+dictionary = {}
+aa = min(dictionary, key=dictionary.get)

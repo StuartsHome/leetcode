@@ -63,7 +63,7 @@ Third - Start and end point
         - e.g. client making call to service(server)
     - Draw arrows or lines conneting things (relationships)
 Calculate usage:
-    - How much data is being sent to servcer
+    - How much data is being sent to server
     - How big are server requests
     - How big are the transactions
     - 40bytes, 40Bil, 40GB transfer to service every month?day? that requires sharding, replication etc.

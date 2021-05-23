@@ -7,6 +7,9 @@
 # Estimations
 - Throughput (QPS for read and write queries)
 - Latency expected from system (read and write queries)
+    - Polling, Server Send Events, Web-sockets
+    - SSE for server to client, one connection is used for all messages
+    - Web Sockets for 2-way
 - Read/Write ratio
 - Traffic Eastimates:
     - Write (QPS, Volume of data)
@@ -59,10 +62,20 @@ as every node can service any request.
         - NoSQL -> AP (Eventual Consistency), CP ()
         - RDMS
             - Master-slave, Master-master, Federation, Sharding, Denormalization, SQL Tuning, Idempotence
+            - Sharding
+                - Horizontal partition for efficient data access patterns
+                - A shard is a horizontal partition of rows, instead of vertical using columns
+                - Increase DB capacity and handle more traffic because load distributed across nodes
+                - Each row is assigned a shard key that maps to the logical shard
+                - More than one shard can be located on the same physical shard, but logical can't be split between physical shards
+                - Create many small shards to prevent hotspots
             - SQL Tune
                 - use fixed-length CHAR instead of VARCHAR
                 - remove expensive joins (denormalize), improve read performance at the expense of some write performance.
                 - store redundant data in multiple tables
+            - Index column to speed up querying 
+                - Pointer to data in table
+                - Quickly access rows, without searching whole table
         - NoSQL
             - Most NoSQL comprimise consistency in favour of availability
             - Lack ACID transactions
@@ -96,7 +109,7 @@ as every node can service any request.
                     for each pc in partialCoutns:
                         sum += pc
                     yield(word, sum)
-
+                ```
 Consistency:
 - when we talk about consistency we refer to an scenario where different entities (nodes) have their own copy of some data object.
     In any distributed systen there will be multiple copies of any one piece of data
