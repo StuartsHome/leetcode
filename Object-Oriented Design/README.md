@@ -187,3 +187,20 @@ Bi-directional relationship in either can push data as they see fit
 As data changes on the back-end it can be pushed
 
 
+Object Store or Distributed File System
+Both are well suited for storing large amounts of unstructured data. 
+Object store exposes a REST API, and therefore is limited to applications that are specifically designed to support this type of storage.
+In contrast, DFSs expose a traditional file system API, which means they are suitable for any application.
+
+Benefits Distributed File System:
+- Supports strong or eventual consistency
+- Hierarchy of folders
+- More specific operations not suitable for object storage.
+- Handling workloads of random reads/writes
+
+
+Benefits of Object Store:
+- Supports eventual consistencymai
+- Files in Flat bucket
+- Repository or archive of massive volumes of large files
+- Cheaper per GB
