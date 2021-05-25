@@ -10,10 +10,10 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
+    def sortedArrayToBST(self, nums):
         
         def helper(left, right):
-            if left > right:
+            if left >= right:
                 return None
         
             mid = (left + right) // 2
