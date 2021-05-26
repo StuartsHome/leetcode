@@ -32,28 +32,62 @@ import heapq
 class Solution:
     def findCheapestPrice(self, n, flights, src, dst, K):
         graph = {}
-
+        visited = defaultdict(set)
         for u in range(n):
             graph[u] = []
 
-        for u,v,w in flights:
-            graph[u].append((v,w))
+        for start, dest, cost in flights:
+            graph[start].append((dest, cost))
 
-        heap = [(0,-K,src)]
+        heap = [(0, K + 1,src)]
 
         while heap:
-            (cost,i,u) = heapq.heappop(heap)
+            price, stops, city = heapq.heappop(heap)
+            if dest in visited[city]:
+                continue
+            visited[city].add(stops)
+            if city == dst:
+                return price
+            
 
-            if u == dst:
-                return cost
-
-            for v,w in graph[u]:
-                nc = cost + w
-
-                if i <= 0:
-                    heapq.heappush(heap, (nc,i+1,v))
+            if stops > 0:
+                for v,w in graph[city]:
+                    if (stops - 1) in visited[city]:
+                        continue
+                    nc = price + w
+                    heapq.heappush(heap, (nc, stops - 1,v))
 
         return -1   
+
+
+        # With visited default dict
+        graph = {}
+        visited = defaultdict(set)
+        for u in range(n):
+            graph[u] = []
+
+        for start, dest, cost in flights:
+            graph[start].append((dest, cost))
+
+        heap = [(0, K + 1,src)]
+
+        while heap:
+            price, stops, city = heapq.heappop(heap)
+            if stops in visited[city]:
+                continue
+            visited[city].add(stops)
+            if city == dst:
+                return price
+            
+            if stops > 0:
+                for v,w in graph[city]:
+                    if (stops - 1) in visited[v]:
+                        continue
+                    nc = price + w
+                    heapq.heappush(heap, (nc, stops - 1,v))
+        return -1   
+
+
 
         # graph = collections.defaultdict(list)
         # q = []
@@ -117,29 +151,3 @@ Run.findCheapestPrice(3, [[0,1,100],[1,2,100],[0,2,500]], 0, 2, 1)
 #                 dist[v] = alt
 #                 prev[v] = u
 #     return dist, prev
-
-
-# TLE - but accepted in 2020
-# graph = {}
-
-# for u in range(n):
-#     graph[u] = []
-
-# for u,v,w in flights:
-#     graph[u].append((v,w))
-
-# heap = [(0,-K,src)]
-
-# while heap:
-#     (cost,i,u) = heapq.heappop(heap)
-
-#     if u == dst:
-#         return cost
-
-#     for v,w in graph[u]:
-#         nc = cost + w
-
-#         if i <= 0:
-#             heapq.heappush(heap, (nc,i+1,v))
-
-# return -1   
