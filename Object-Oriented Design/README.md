@@ -204,3 +204,22 @@ Benefits of Object Store:
 - Files in Flat bucket
 - Repository or archive of massive volumes of large files
 - Cheaper per GB
+
+
+Python OOD
+- Singleton
+    - Singleton pattern provides a mechanism to limit the number of the instances of the class to one. 
+    - Python has no private constructors
+        - what you can do is raise an exception if the object is already instantiated
+
+
+Gang of Four
+- Program to an interface not an implementation
+- Favour object composition over inheritance
+
+- Python doesn't define interfaces and program classes according to these interfaces
+- But inheritantly we use duck-typing and consider interfaces all the time
+    - If it looks like a duck and quacks like a duck, it's a duck.
+- We don't bother with the nature of the object, nor have to care what the object is
+We just want to know if it's able to do what we need.
+(We are only interested in the interface of the object)
