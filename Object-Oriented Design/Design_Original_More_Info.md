@@ -5,8 +5,8 @@
 - How use (usage patterns)
 
 # Estimations
+- Throughput (QPS for read and write queries)
 - Latency expected from system (read and write queries)
-    - high latency may effect consistency
     - Polling, Server Send Events, Web-sockets
     - SSE for server to client, one connection is used for all messages
     - Web Sockets for 2-way
@@ -16,9 +16,7 @@
     - Read (QPS, Volume of data)
 - Storage Estimates
 - Memory Estimates
-    - cache - static content, not dynamic
     - If using cache, what kind of data stored in cache
-        - Pre warm caches before customer request
         - How to handle cache missies?
             - Policy (FIFO, LIFO, LRU)
     - How much RAM and how many machine to achieve this?
@@ -169,8 +167,6 @@ NoSQL:
 
 To Do:
 - CDN: Push vs Pull
-    - Push you have more control on content to cache
-    - Pull more automated, but liable to cache wrong content
 - SQL use cases: e.g. for availability or consistency, which is best for what?
 - NoSQL - when to use Key-Value, Wide-Column, Graph, Document
 - Load Balancers (Active-Passive, Active-Active, Layer 4, Layer 7)

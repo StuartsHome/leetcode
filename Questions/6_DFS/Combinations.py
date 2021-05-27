@@ -2,6 +2,7 @@
 # Given two integers n and k, return all possible combinations of
 # k numbers out of the range [1, n].
 
+# T: O(2 ^ n)
 
 class Solution:
     def combine(self, n, k):

@@ -49,7 +49,7 @@ class LRUCache:
         else:
             self.tail.next = new_node
             new_node.prev = self.tail
-            self.tail = self.tail.next
+            self.tail = self.tail.next #after linking new node to LL, the new_node now bbecomes tail node or (MRU) node
             
     def unlink_curr_node(self, node):
         if self.head is node:
@@ -57,9 +57,9 @@ class LRUCache:
             if node.next:
                 node.next.prev = None
             return
-        prev, nex = node.prev, node.next
+        prev, nex = node.prev, node.next # the next and prev links either side of the node to unlink
         prev.next = nex
-        nex.prev = prev
+        nex.prev = prev 
         
     def get(self, key):
         if key not in self.memo:

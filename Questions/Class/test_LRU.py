@@ -31,6 +31,8 @@ class cache:
         if key in curr:
             curr[key].val = value
             self.get(key)
+            # add to 
+
             return
         else:
             if len(cache) == self.capacity:
