@@ -40,7 +40,7 @@ class Spot:
         self.vehicle = None
 
     def park_vehicle(self, vehicle):
-
+        pass
     def is_available(self):
         if self.vehicle:
             return False
