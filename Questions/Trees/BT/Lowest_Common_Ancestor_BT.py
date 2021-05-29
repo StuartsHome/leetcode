@@ -1,3 +1,15 @@
+# Leetcode 236. Lowest Common Ancestor of a Binary Tree
+# T: O(n) - visit every node of BT.
+# S: O(n)
+
+# Traverse tree from root node
+# If curr node is one or p or q, we mark flag as True
+# and continue the search for the other node in the left or right branches.
+# If either of the left or right branch returns True, this means one of the two nodes
+# was found below.
+# If at any point in the traversal, any two of the three flags, left, right or flag
+# become True, this means we have found the lowest common ancestor for the nodes, p and q.
+
 class TreeNode:
     def __init__(self, val=0, left = None, right = None):
         self.val = val
@@ -16,11 +28,11 @@ class Solution:
             left = dfs(curr.left)
             right = dfs(curr.right)
 
-            mid = (curr.val == p) or (curr.val == q)
+            flag = (curr.val == p) or (curr.val == q)
 
-            if mid + left + right >= 2:
+            if flag + left + right >= 2:
                 self.result = curr
-            return mid or left or right
+            return flag or left or right
         dfs(root)
         print(self.result.val)
 
