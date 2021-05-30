@@ -15,8 +15,6 @@
 - Bottom-up algos do a topological sort of the dependency DAG (acyclic)
 
 ### Paths
-BFS used for shortest path in unweighted graph
-
 Find shortest path between Source `(s)` and target `(v)` for all `(v)`
 - The memoized algorithm does a DFS, to do a Topological sort, to run one round of Bellman Ford
 
