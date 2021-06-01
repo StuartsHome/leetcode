@@ -3,7 +3,9 @@
 # Find the first island with 2 for loops
 # Use DFS to find all connected 1 locations.
 # There are only two islands so we only need to find the first one 
-# 
+# Add all the first island 1 coordinates to queue and change 1's to 2's
+# Run BFS on coordinates and increment steps for each level
+# When BFS finds the first 1, return steps
 
 
 # grid = [[0,1],[1,0]]
