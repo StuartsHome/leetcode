@@ -1,4 +1,9 @@
 # Leetcode 97. Interleaving String
+
+# Keep two points on s1 and s2 and traverse s3, the current char in s3 is either from s1 or s2 or both.
+# Use a set to record all possibility and dp on.
+# The key here is to use a set to record the pointers, because duplicates are possible, using a list cause TLE.
+
 from collections import deque
 class Solution:
     def isInterleave(self, s1, s2, s3):
@@ -6,6 +11,7 @@ class Solution:
             return False
 
         last = set([(0,0)]) # Has to be 3 sets of brackets, 2 doesn't work
+                            # set inside list because we can have a set each for s1 and s2
 
         for char in s3:
             current = set()
@@ -42,25 +48,4 @@ Run.isInterleave("aabc","abad","aabcabad")
 ("aa","ab","aaba")
 ("","","a")
 ("aabcc", "dbbca", "aadbbcbcac")
-
-
-        # if len(s1) == 0 and len(s2) == 0 and len(s3) == 0:
-        #     return True
-        
-        # stack1 = deque(s1)
-        # stack2 = deque(s2)
-        
-        # for i in s3:
-        #     top1 = stack1.popleft() if stack1 else None
-        #     top2 = stack2.popleft() if stack2 else None
-        #     # top1 = stack1.popleft()
-        #     # top2 = stack2.popleft()
-        #     if i != top1 and i != top2:
-        #         return False
-        #     if i == top1:
-        #         stack2.appendleft(top2)
-        #     elif i == top2:
-        #         stack1.appendleft(top1)
-        # if not top1 and not top2:
-        #     return True
 
