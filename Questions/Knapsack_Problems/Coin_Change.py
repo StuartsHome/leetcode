@@ -1,4 +1,11 @@
 # Leetcode 322. Coin Change
+# Infinite amount of each coin
+# Return fewest number of coins to make amount
+
+# T: O(amount * n) - where n is number of coins, because we have O(amount) different states
+# and we have n choices to go from any state
+# S: O(amount)
+
 """
 It's actually a complete backpack problem:
 - capacity of the "backpack" is amount
@@ -13,7 +20,7 @@ class Solution:
 
         for coin in coins:
             for i in range(coin, amount + 1):
-                dp[i] = min(dp[i], dp[i-coin] + 1)
+                dp[i] = min(dp[i], dp[i-coin] + 1) # Plus 1 because we start from zero
 
         if dp[-1] == float('inf'):
             return -1

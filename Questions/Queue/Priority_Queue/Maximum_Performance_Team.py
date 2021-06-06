@@ -4,6 +4,16 @@
 # Greedy because we decompose a problem into a series of stages, and
 # at each stage we make the locally optimal choice.
 
+# The priority queue, also known as a heap, is a data structure which
+# dynamically maintains the order of elements based on some predefined priority.
+# The priority queue is well-known for its optomised time complexity when maintaining
+# a list of sorted elements.
+
+# The priority queue is used to store the speeds for the rest of k-1 team members.
+# The priority queue is maintained as a sliding window along with out iteration.
+# For example, we pop out the member with the lowest speed when we exceed the predefined
+# capacity of the queue, which is k-1.
+
 # Solution is derived from an enumeration process.
 # At each step we build a locally optimal team by starting from a fixed engineer
 # with the minimum efficiency on the team.
