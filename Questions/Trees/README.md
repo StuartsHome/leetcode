@@ -1,4 +1,7 @@
-
+## Traversals
+- Preorder: Root -> Left -> Right
+- Inorder: Left -> Root -> Right
+- Postorder: 
 
 ## Sum of Binary Tree
 ```python
