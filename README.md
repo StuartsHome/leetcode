@@ -12,6 +12,10 @@
 - Trees
 - Tries
 
+## Time Complexity
+Questions:
+- What's the time complexity of each recursive call?
+- How many times each recursive call invoked?
 
 Top:
 - Camelcase Matching - Leetcode 1023

@@ -6,6 +6,11 @@
 # Find index of root in inorder
 # Create a new TreeNode of index value
 
+# Solution 2, T: O(n^2), S: O(n^2)
+# Slicing in Python creates a new list (extra space)
+# For each recursive call of input N, we do O(n).
+# Thus n * n = n^2
+# list.index = O(n) & recursive call = O(n), we can change the "list.index" to dict for better O(1) runtime
 
 # Hashmap solution:
 # T: O(n)
@@ -48,7 +53,7 @@ class Solution:
         return helper(0, len(preorder) - 1)
 
 
-
+        # T: O(n^2) 
         # if inorder:
         #     ind = inorder.index(preorder.pop(0))    # set first item of preorder as root
         #     root = TreeNode(inorder[ind])
