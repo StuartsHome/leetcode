@@ -89,3 +89,11 @@ x**.5
 # Using Dictionary - min or max of values:
 dictionary = {}
 aa = min(dictionary, key=dictionary.get)
+
+# Using Dictionary - sort values:
+memo = sorted(memo.items(), key=lambda x: x[1])
+
+
+# DP arrays - don't do this! Do this:
+dp = [[False] * n for _ in matrix] # Good
+dp = [[False] * n]*m               # Bad - every value in first row replicates to all rows

@@ -20,23 +20,22 @@ class Solution:
         if not matrix: return []
         m, n = len(matrix), len(matrix[0])
         dp = [[False] * n for _ in matrix]
-        dp_2 = [[False] * n]*m
+        # dp = [[False] * n]*m
 
-        # result = []
-        # d_r = [0, 1, 0, -1]                         # directions of rows
-        # d_c = [1, 0, -1, 0]                         # directions of cols
-        # row = col = arrow = 0                       # arrow determines the rows & cols to start from each iteration
-        # for _ in range(m * n):                      # iterate for every node in graph
-        #     result.append(matrix[row][col])
-        #     dp[row][col] = True
-        #     temp_row, temp_col = row + d_r[arrow], col + d_c[arrow]
-        #     if temp_row in range(m) and temp_col in range(n) and not dp[temp_row][temp_col]:
-        #         row, col = temp_row, temp_col
-        #     else:
-        #         arrow = (arrow + 1) % 4             # if out of range, increment starting row & col
-        #         row, col = row + d_r[arrow], col + d_c[arrow]
-        print(dp)
-        print(dp_2)
+        result = []
+        d_r = [0, 1, 0, -1]                         # directions of rows
+        d_c = [1, 0, -1, 0]                         # directions of cols
+        row = col = arrow = 0                       # arrow determines the rows & cols to start from each iteration
+        for _ in range(m * n):                      # iterate for every node in graph
+            result.append(matrix[row][col])
+            dp[row][col] = True
+            temp_row, temp_col = row + d_r[arrow], col + d_c[arrow]
+            if temp_row in range(m) and temp_col in range(n) and not dp[temp_row][temp_col]:
+                row, col = temp_row, temp_col
+            else:
+                arrow = (arrow + 1) % 4             # if out of range, increment starting row & col
+                row, col = row + d_r[arrow], col + d_c[arrow]
+        return result
 
         # result = []
         # if len(matrix) == 0:
