@@ -1,56 +1,37 @@
 # Leetcode 316. Remove Duplicate Letters
+# Greedy w/ stack
+# T: O(n)
+# S: O(26) - because it will be the longest size of our stack and answer.
 
-from collections import Counter
-# import string
+
+# The key information this approach is knowing where the last occurrence of each character is.
+# Everything before the first last occurrence is a candidate for deletion.
+
 class Solution:
     def removeDuplicateLetters(self, s):
-        last_occ = {num: indx for indx, num in enumerate(s)}
-
-        stack = ["!"]
-        visited = set()
-        
+        last_occ = {num: indx for indx, num in enumerate(s)}    # to find the last index of each letter in s
+        result = ""
         for ind, val in enumerate(s):
-            if val in visited: continue
+            if val not in result:
+                while val < result[-1:] and ind < last_occ[result[-1]]:
+                    result = result[:-1]
+                result += val
+        return result
 
-            while val < stack[-1] and last_occ[stack[-1]] > ind:
-                visited.remove(stack.pop())
-            stack.append(val)
-            visited.add(val)
-        return "".join(stack[1:])
+        # last_occ = {num: indx for indx, num in enumerate(s)}    # to find the last index of each letter in s
 
+        # stack = ["!"]
+        # visited = set()
+        
+        # for ind, val in enumerate(s):
+        #     if val in visited: continue
 
+        #     while val < stack[-1] and last_occ[stack[-1]] > ind:
+        #         visited.remove(stack.pop())
+        #     stack.append(val)
+        #     visited.add(val)
+        # return "".join(stack[1:])
 
 Run = Solution()
 Run.removeDuplicateLetters("cbacadcbc")
 ("bcabc")
-        # d = {chr(i+96):i for i in range(1,27)}
-        # minner = 97
-        # memo = {}
-        # for key, i in enumerate(s):
-        #     if d[i] <= minner:
-        #         minner = d[i]
-        #         if i in memo:
-        #             aa = memo[i].append(key)
-        #             # aa = aa.append(key)
-        #             memo[i] = aa
-        #         else:
-        #             memo = {i: [key]}
-        # print(memo)
-        
-        # j = curr = 0
-        # result = []
-        # for i in range(len(s)):
-        #     counter = i
-        #     memo_2 = [[counter]]
-        #     for j in range(i, len(s)):
-        #         if s[j] not in memo_2:
-        #             memo_2.append(s[j])
-        #         else:
-        #             bb = memo_2.copy()
-        #             result.append(bb)
-        #             aa = memo_2.count(s[j])
-        #             while memo_2 and memo_2.count(s[j]) > 0:
-        #                 memo_2.pop(0)
-        #             memo_2.append(s[j])
-            
-        # print(result)
