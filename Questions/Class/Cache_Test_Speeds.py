@@ -1,26 +1,4 @@
-# class cache:
-#     def __init__(self, capacity):
-#         self.memo = {}
-#         self.capacity = capacity
-#     def insert(self, key, val):
-#         curr = self.memo
-#         if key in curr:
-#             del curr[key]
-#             print(curr)
-#             curr[key] = val # updates original val to new val
-#             print(curr)
-#         else:
-#             curr[key] = val
-#             print(curr)
-
-#     def get(self, key):
-#         curr = self.memo
-#         try:
-#             temp = curr[key]
-#             print(temp)
-#         except KeyError as e:
-#             print("key not in cache", e) 
-
+import random
 class LinkedNode:
     def __init__(self, key, val):
         self.key = key
@@ -91,12 +69,38 @@ class cache:
             self.addNodeLL(node)            # 2. Add to LL
 
 
-Run = cache(1)
-Run.put(2, 1)
-Run.get(2)
-# Run.put("a", 100)
-# Run.put("a", 200)
-# Run.get(1000)
+
+
+class mem:
+    def __init__(self):
+        self.nums = []
+    def insert(self, value):
+        self.nums.append(value)
+    
+    def get(self, value):
+        self.nums.index(value)
+        print("found")
+
+Run = mem()
+for i in range(1000000):
+    print(i)
+    Run.insert(i)
+print("Start finding")
+Run.get(900000)
+print("Finish finding")
+
+
+# Run = cache(1)
+# Run.put(2, 1)
+# Run.get(2)
+
+# Run = cache(1000001)
+# for i in range(1000000):
+#     print(i)
+#     Run.put(i, random.randint(100001, 1000000000))
+# print("Start")
+# aa = Run.get(80000)
+# print(aa)
 
 
 
