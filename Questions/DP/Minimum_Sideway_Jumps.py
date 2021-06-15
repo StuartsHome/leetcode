@@ -21,9 +21,3 @@ class Solution:
 
 Run = Solution()
 Run.minSideJumps([0,1,2,3,0])
-
-
-1   0   1
-inf  0   1
-2  inf  1
-2  3  inf
