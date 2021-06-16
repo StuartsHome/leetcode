@@ -19,6 +19,7 @@ class Solution:
                 return
             dfs(curr.left, path + [curr.val], total - curr.val)
             dfs(curr.right, path + [curr.val], total - curr.val)
+            return
 
         dfs(root, [], targetSum)
         return self.result

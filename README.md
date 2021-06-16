@@ -17,6 +17,10 @@ Questions:
 - What's the time complexity of each recursive call?
 - How many times each recursive call invoked?
 
+## Space Complexity
+For recursive solutions, the space complexity is the stack space occupied by all the recursive calls.
+
+
 Top:
 - Camelcase Matching - Leetcode 1023
 - Subsequence
