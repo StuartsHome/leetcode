@@ -1,6 +1,6 @@
 # Leetcode 473. Matchsticks to Square
 
-# This problem boils down to splitting an array of integers into 44 subsets where all of these subsets are:
+# This problem boils down to splitting an array of integers into 4 subsets where all of these subsets are:
 # 1. mutually exclusive i.e. no specific element of the array is shared by any two of these subsets, and
 # 2. have the same sum which is equal to the side of our square.
 
@@ -10,14 +10,14 @@
 # S: O(n) - For recursive solutions, the space complexity is the stack space occupied by all the recursive
 # calls. The deepest recursive call here would be of size N
 
-# Sort the input in reverse as it's quicker to find if the input will return False
-# as if the first item doesn't fit to a side, then it'll return False
+# Sort the input in reverse as it's quicker to find if the input will return False:
+# if the first item doesn't fit into a side, then it'll return False
 
 class Solution:
     def makesquare(self, matchsticks):
         if not matchsticks:
             return False
-        
+            
         N = len(matchsticks)
         numSum = sum(matchsticks)
         side = numSum // 4
