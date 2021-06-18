@@ -4,6 +4,9 @@
 # Use a set to record all possibility and dp on.
 # The key here is to use a set to record the pointers, because duplicates are possible, using a list cause TLE.
 
+# T: O(m*n) =  where m is len of string s1 and n is length of string s2
+# S: O(n)
+
 from collections import deque
 class Solution:
     def isInterleave(self, s1, s2, s3):
