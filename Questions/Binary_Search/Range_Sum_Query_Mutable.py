@@ -75,7 +75,7 @@ class NumArray:
         return total
     
     def update(self, i, val):               
-        delta = val - self.sumRange(i, i)   # find the difference between curr val at index and val to update
+        delta = val - self.sumRange(i, i)   # find the difference between curr val at index and val to update 
         self.increment(i, delta)            # Add that difference to every left node up the tree
 
     def sumRange(self, i, j):
@@ -86,6 +86,33 @@ obj.sumRange(3, 12)
 obj.update(1, 2)
 
 """ 
+
+# Creating the tree and it's layout:
+# 1. Get the binary representation of each index
+# 2. Flip the right most "1" bit
+# 3. The result is the parent index
+            0
+    /     /     \     \
+  1     2       4       8
+
+0 is a parent of 1,2,4,8 because the binary representation of:
+# 1 = 0001
+# 2 = 0010
+# 3 = 0011
+# 4 = 0100
+# 8 = 1000
+# 10 = 1010
+
+If you flip the right most 1 bit they become:
+# 1 = 0000  = 0 (parent is 0)
+# 2 = 0000  = 0 (parent is 0)
+# 3 = 0010  = 2 (parent is 2)
+# 4 = 0000  = 0 (parent is 0)
+# 8 = 0000  = 0 (parent is 0)
+# 10 = 1000 = 8 (parent is 8)
+From the above list - all are children of 0, except 3 and 10, which are a children
+of 2 and 8
+
 # To get parent node in O(1):
     # Start with index of node to find parent
     # Increment index by 1 because self.dp is zero based
@@ -107,7 +134,29 @@ obj.update(1, 2)
     # AND 2's complement index with original index to find difference
     # Add the difference to original index to find new index
 """
+"""
+0 = dummy node (root node), All ranges starting from 0 are new subtrees from dummy node(root)
+index 1 = 0 + 2^0               = range = 0 - 0         = the sum of range 0,0 is stored at index 1 (1 value)
+index 2 = 0 + 2^1               = range = 0 - 1         = the sum of range 0,1 is stored at index 2 (2 values)
+index 3 = 2^1 + 2^0             = range = 2 - 2         = the sume of range 2,2 is stored at index 3 (1 value)
+index 4 = 0 + 2^2               = range = 0 - 3         = etc ...
+index 5 = 2^2 + 2^0             = range = 4 - 4
+index 6 = 2^2 + 2^1             = range = 4 - 5 
+index 7 = 2^2 + 2^1 + 2^0       = range = 6 - 6 (start from 2^2 + 2^1 = 6)
+index 8 = 0 + 2^3               = range = 0 - 7
+index 9 = 2^3 + 2^0             = range = 8 - 8 
+index 10 = 2^3 + 2^1            = range = 8 - 9 
+index 11 = 2^3 + 2^1 + 2^0      = range = 10 - 10 (start from 2^3 + 2^1 = 10) 
 
+"""
+
+"""
+2's complement
+7 = 111
+2's complement of 7 = flip all bits and add 1
+= 00 + 1 = 001
+
+"""
 
 
 # Original Implementation w/generators
@@ -194,33 +243,6 @@ the amount that the current frequency has increased relative to the previous buc
     # 3. Repeat the following while n != 0
     # 4. Add in the value at node n
     # 5. Clear the rightmost 0 bit from n
-
-
-"""
-
-"""
-0 = dummy node (root node), All ranges starting from 0 are new subtrees from dummy node(root)
-index 1 = 0 + 2^0               = range = 0 - 1
-index 2 = 0 + 2^1               = range = 0 - 2
-index 3 = 2^1 + 2^0             = range = 2 - 3
-index 4 = 0 + 2^2               = range = 0 - 4
-index 5 = 2^2 + 2^0             = range = 4 - 5
-index 6 = 2^2 + 2^1             = range = 4 - 6 
-index 7 = 2^2 + 2^1 + 2^0       = range = 6 - 7 (start from 2^2 + 2^1 = 6)
-index 8 = 0 + 2^3               = range = 0 - 8
-index 9 = 2^3 + 2^0             = range = 8 - 9 
-index 10 = 2^3 + 2^1            = range = 8 - 10 
-index 11 = 2^3 + 2^1 + 2^0      = range = 10 - 11 (start from 2^3 + 2^1 = 10) 
-
-
-
-"""
-
-"""
-2's complement
-7 = 111
-2's complement of 7 = flip all bits and add 1
-= 00 + 1 = 001
 
 
 """
