@@ -33,20 +33,20 @@ class NumArray:
     #     self.nums = nums
     #     self.n = ceil(sqrt(len(nums)))              # The number of buckets
     #     self.bucket = [0 for _ in range(self.n)]    # Initialise each bucket at 0
-    #     for key, val in enumerate(nums):            # The sum of each bucket
+    #     for key, val in enumerate(nums):            # The sum of each bucket / Tells what bucket each value should be placed in
     #         self.bucket[key//self.n] += val
 
-    # def update(self, index, val):
-    #     self.bucket[index // self.n] += val - self.nums[index]
-    #     self.nums[index] = val
+    # def update(self, index, val):                                 # 2 Steps to update
+    #     self.bucket[index // self.n] += val - self.nums[index]    # 1. Find which bucket we need to update, and update the whole bucket total by the difference between new value and old value
+    #     self.nums[index] = val                                    # 2. Update the old value with the new value
 
     # def sumRange(self, left, right):
-    #     startBucket, endBucket = left//self.n, right//self.n        # get 
+    #     startBucket, endBucket = left//self.n, right//self.n        # Find which bucket left & right are in 
     #     ans = 0
     #     if startBucket == endBucket: # only one bucket
     #         ans = sum(self.nums[k] for k in range(left, right + 1))
     #     else:
-    #         for k in range(startBucket +1, endBucket):          # The sums of each bucket in range
+    #         for k in range(startBucket +1, endBucket):          # Left & Right fully lie within range Start&End Bucket so add the full totals to total
     #             ans += self.bucket[k]
     #         for k in range(left, (startBucket + 1) * self.n):   # partial bucket (leading)
     #             ans += self.nums[k]
@@ -84,6 +84,68 @@ class NumArray:
 obj = NumArray([1,3,5, 10, 20, 32, 35, 40, 50, 65, 66, 67 ,100])
 obj.sumRange(3, 12)
 obj.update(1, 2)
+"""
+Fenwick Tree - Updated version using my own variable names:
+class NumArray:
+
+    def __init__(self, nums):
+        self.dp = [0 for _ in range(len(nums) + 1)]
+        for ind, val in enumerate(nums):
+            self._increment(ind, val)
+
+    def _increment(self, ind, val):
+        ind += 1
+        while ind < len(self.dp):
+            self.dp[ind] += val
+            ind += ind & -ind
+    
+    def _prefixSum(self, ind):
+        ind += 1
+        counter = 0
+        while ind > 0:
+            counter += self.dp[ind]
+            ind -= ind & -ind
+        return counter
+
+    def update(self, index, val):
+        delta = val - self.sumRange(index, index)
+        self._increment(index, delta)
+
+    def sumRange(self, left, right):
+        return self._prefixSum(right) - self._prefixSum(left - 1) 
+"""
+"""
+Sqrt Decomposition - Updated version less generators and better variable names
+class NumArray:
+    from math import ceil, sqrt
+    def __init__(self, nums):
+        self.nums = nums
+        self.N = ceil(sqrt(len(nums)))
+        self.bucket = [0 for _ in range(self.N)]
+        for key, val in enumerate(self.nums):
+            self.bucket[key//self.N] += val
+
+    def update(self, index, val):
+        self.bucket[index//self.N] += val - self.nums[index]
+        self.nums[index] = val
+
+    def sumRange(self, left, right):
+        startBucket, endBucket = left//self.N, right//self.N
+        count = 0
+        if startBucket == endBucket:
+            for i in range(left, right + 1):
+                count += self.nums[i]
+        else:
+            for i in range(startBucket + 1, endBucket):         
+                count += self.bucket[i]
+            for i in range(left, (startBucket + 1) * self.N):
+                count += self.nums[i]
+            for i in range(endBucket * self.N, right + 1):
+                count += self.nums[i]
+        return count
+"""
+
+
 
 """ 
 
