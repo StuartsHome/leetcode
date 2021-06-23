@@ -87,10 +87,10 @@ class Solution:
         left, right = 0, len(arr)- k
         while left < right:
             ind = left + (right - left) // 2
-            # val = arr[ind]
-            if x - arr[ind] > arr[ind + k] - x: # if index + k val is less than index include and left becomes index and increment by 1
+            # Alternative: x > (arr[ind + k] + arr[ind])/2     # I.e. if x > than the midpoint of the current window, move the window right
+            if x - arr[ind] > arr[ind + k] - x:                # if x - arr[ind] > arr[ind + k] - x, move the window right
                 left = ind + 1
-            else:                               # Else, left val is equal or less than right,  change right to be right bounds because left indexes are always < right indexes
+            else:                                              # Else, left val is equal or less than right,  change right to be right bounds because left indexes are always < right indexes
                 right = ind
         return arr[left:left + k]
 
@@ -103,11 +103,11 @@ Run.findClosestElements_4([0,0,1,2,3,3,4,7,7,8], 3, 5)
 
 [0,0,1,2,3,3,4,7,7,8], 3, 5
 
-0 - 5 - 0 = 5, 8 - 5 = 3
-0 - 5 - 0 = 5, 7 - 5 = 2
-1 - 5 - 1 = 4, 7 - 5 = 2
-2 - 5 - 2 = 3, 4 - 5 = 1
-3 - 5 - 3 = 2, 3 - 5 = 2 
+5 - 0 = 5,                 8 - 5 = 3           5 - 8 = -3
+5 - 0 = 5,                 7 - 5 = 2           5 - 7 = -2
+5 - 1 = 4,                 7 - 5 = 2           5 - 7 = -2
+5 - 2 = 3,                 4 - 5 = 1           5 - 4 = 1
+5 - 3 = 2,                 3 - 5 = 2           5 - 3 = 2
 
 # 5 - -10 = 5
 # 5 - 3 = 2
