@@ -3,6 +3,17 @@
 
 # Solution 1: T: O(n * k), S: O(n * k)
     # n is the number of words, and K is the length of each word
+
+    # How it works:
+    # We traverse both arrays at same time using zip!
+    # For each iteration, we check if element is currently a key in dictionaries,
+    # mapping the keys to the other current element in the iteration, i.e.
+    # Iteration 1: 
+    # We keep adding until we find an element that is already stored in the dicitonary.
+    # We skip populating or updating that dictionary
+    # We then check if the value of the key in the dictionary not updated, if the value 
+    # equals the current element in the other iteration, continue; else return False
+
 # Solution 2: T: O(n * k), S: O(n * K)
 
 # Filter() -> Returns an itertor were the items are filtered through a function
@@ -48,24 +59,19 @@ class Solution:
 Run = Solution()
 Run.findAndReplacePattern(["abc","deq","mee","aqq","dkd","ccc"], "abb")
 
-        # # Two maps
-        # def match(word):
-        #     m1, m2 = {}, {}
-        #     for w, p in zip(word, pattern):
-        #         if w not in m1: m1[w] = p
-        #         if p not in m2: m2[p] = w
-        #         if (m1[w], m2[p]) != (p, w):
-        #             return False
-        #     return True
+# # Two maps
+"""
+def helper(temp):
+    memo1, memo2 = {}, {}
+    for w, p in zip(temp, pattern):
+        if w not in memo1: memo1[w] = p
+        if p not in memo2: memo2[p] = w
+        if (memo1[w], memo2[p]) != (p, w):
+                return False
+    return True
 
-        # # This can be replaced with a for loop
-        # return filter(match, words)
-
-        # """
-        # result = []
-        # for i in words:
-        #     aa = match(i)
-        #     if aa:
-        #         result.append(i)
-        # return result
-        # """
+result = []
+for word in words:
+    if helper(word): result.append(word)
+return result
+"""
