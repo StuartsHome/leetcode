@@ -2,6 +2,16 @@
 
 class Solution:
     def removeDuplicates(self, s, k):
+        stack = []
+        for char in s:
+            if stack and stack[-1] == char:
+                stack.pop()
+            else:
+                stack.append(char)
+        
+        return ''.join(stack)
+
+        # Solution 2 - More verbose
         stack = [["!", 1]]
         for elem in s:
             if elem == stack[-1][0]:

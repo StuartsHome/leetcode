@@ -9,9 +9,6 @@
 # Each entry in dp, i.e. dp[i][j] signifies the difference between the
 # ith stone and the jth stone.
 # Problem is to find the difference of scores between 0th stone and nth stone.
-#
-
-
 
 # 1. Calculate the presum
 # 2. Make 2D array, N * N
@@ -35,6 +32,7 @@ the amount of points from the remaining stones in the range [i,j].
 
 class Solution:
     def stoneGameVII(self, stones):
+        # Bottom Up
         accum = [0] + stones[:]
         for i in range(1, len(accum)):
             accum[i] += accum[i-1]
